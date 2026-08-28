@@ -215,3 +215,4 @@ flash_attn-2.7.0.post1+cu12torch2.3cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
 
 logs/
 install.sh
+egs/
