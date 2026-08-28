@@ -265,7 +265,7 @@ class DiTBuildModelMixin:
             from transformers import AutoTokenizer
             qwen_name = hparams.get(
                 "pretrained_text_encoder_qwen",
-                "/mnt/bn/sa-ag-data/leike/spatial_edit/ScriptSpeech/checkpoints/Qwen3-0.6B",
+                "checkpoints/Qwen3-0.6B",
             )
             text_tokenizer = AutoTokenizer.from_pretrained(qwen_name)
             text_tokenizer.add_tokens([
