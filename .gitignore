@@ -223,3 +223,12 @@ modules/vae
 modules/vc
 modules/vocoder
 tasks
+modules/tts/ar_dur
+modules/tts/codeclm
+modules/tts/ditar
+modules/tts/f5_dit
+modules/tts/frontend_lm
+modules/tts/image_encoder
+modules/tts/semantic_encoders
+modules/tts/swanaudio
+modules/tts/wavvae
