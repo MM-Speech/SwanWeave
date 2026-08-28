@@ -7,7 +7,7 @@ import soundfile as sf
 import torch
 import torch.nn.functional as F
 
-from inference.tts.spat_base_infer import SpatBaseInfer
+from inference.spatial.spat_base_infer import SpatBaseInfer
 from utils.commons.hparams import hparams
 
 
