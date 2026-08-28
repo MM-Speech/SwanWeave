@@ -217,3 +217,8 @@ logs/
 install.sh
 egs/
 inference/tts
+modules/asr
+modules/codec
+modules/vae
+modules/vc
+modules/vocoder
