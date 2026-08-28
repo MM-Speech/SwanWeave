@@ -1,0 +1,83 @@
+base_config:
+- egs/tts/config_base.yaml
+- egs/asr/datasets/aligner_dataset_qwen3aligner_260211.yaml
+
+fft_size: 800
+hop_size: 160
+win_size: 800
+audio_sample_rate: 16000
+f0_max: 600
+f0_min: 60
+fmax: 8000
+fmin: 0
+loud_norm: false
+audio_num_mel_bins: 160
+
+# task
+task_cls: tasks.asr.aligner_task.Aligner2MDMTask
+
+# data
+frames_multiple: 4
+dataset_cls: tasks.asr.dataset_utils.aligner_fastdataset_v2.AlignerShmDataset
+val_dataset_cls: tasks.tts.dataset_utils.tts_datasets.DiTWavTextDataset
+use_audio_dataset: False
+fast_ds_prefetch_steps: 64
+
+# dataloader
+eval_max_batches: 0
+ds_workers: 16
+max_tokens: 40000
+max_sentences: 300
+max_frames: 30000   # 5min
+min_frames: 100
+tgt_size_max: 30000  # 300 sec
+tgt_size_min: 50
+
+# model
+model_version: aligner_mdm
+audio_hidden_size: 512
+audio_num_hidden_layers: 2
+audio_num_attention_heads: 8
+audio_num_key_value_heads: 8
+hidden_size: 512
+num_hidden_layers: 12
+num_attention_heads: 8
+num_key_value_heads: 8
+conf_min: 0.1
+
+mono_loss_weight: 1.0
+mono_pos_weight_masked: 1.0
+mono_pos_weight_unmasked: 0.1
+
+self_conditioning: true
+self_conditioning_prob: 0.1
+self_conditioning_mode: replace_masked
+
+nepa_ckpt: checkpoints/260212_nepa
+freeze_nepa: False
+
+load_ckpt: ''
+use_fsdp: false
+gradient_checkpointing: false
+
+# training
+optimizer:
+  betas:
+  - 0.9
+  - 0.999
+  fused: false
+  lr: 1.0e-4
+  weight_decay: 0.01
+scheduler_lr_min: 5.0e-5
+cudnn_benchmark: false
+accumulate_grad_batches: 2
+
+# noise
+wav_add_noise: True
+wav_add_effect: True
+musan_dir: /mnt/bn/sa-ag-data/liruiqi/data/speech/musan
+musan_with_speech: False
+wav_add_noise_prob: 0.1
+wav_add_effect_prob: 0.1
+
+tb_log_interval: 1

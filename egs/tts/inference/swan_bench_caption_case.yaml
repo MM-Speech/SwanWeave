@@ -1,0 +1,237 @@
+bench: case_all
+out_path: infer_out/swan
+cfg_w: [1.4,3.0]
+timestep_annealing_w: [0.6,0.4,1.0]
+use_amo_sampler: false
+use_sway: true
+num_step: 100
+cpm: 220
+samples:
+  Caption-CN-10to20s:
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十出头女性，甜美奶音，尾音微微上扬，带天然亲近感 }. Content: { Speaker1以轻快带货的语气说：<S1><|sp|>家人们别划走，这款洁面慕斯一按就出泡，洗完不紧绷，敏感肌也能放心用，回购率很高。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十多岁男性，低音炮，胸腔共鸣厚实，语速偏慢，权威感强 }. Content: { Speaker1以专业推荐的语气说：<S1><|sp|>想省钱别只看标价，这个会员一张卡全家都能用，停车、洗车、买菜都能立减，折下来太香了。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十五岁左右女性，御姐音，低沉带磁性，气场外放，断句干脆 }. Content: { Speaker1以冷静解说的语气说：<S1><|sp|>你以为我不在乎？我只是把话咽回去了。今晚把门锁好，别再替我做决定了，听清楚，我说到做到。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十五岁左右男性，清冷少年音，咬字锋利，情绪内收 }. Content: { Speaker1以克制坚定的语气说：<S1><|sp|>合同我可以签，但我想先听你说真话。你欠我的不是解释，是一个明确的选择，就现在，别再逃避。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 四十岁左右女性，知性温润，共鸣位置偏高，语尾带轻柔气声 }. Content: { Speaker1以温柔安抚的语气说：<S1><|sp|>别怕，今天先把药贴上，再热敷十分钟，肩颈就会松很多，睡觉也不会总翻来覆去，明早更轻松。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十三岁女性，声线明亮偏高，节奏轻快跳跃，带少女感 }. Content: { Speaker1以自然分享的语气说：<S1><|sp|>这杯酸奶真没负担，低糖高蛋白，早上随手一喝就顶饱，上班路上也不耽误，味道还挺香。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 五十岁左右男性，烟嗓沙哑，气息深沉，叙事感极强，像在讲故事 }. Content: { Speaker1以低声讲述的语气说：<S1><|sp|>三年前你说走就走，我把所有证据都留着。今晚你回来，我只问一句：还敢看我吗，回答我。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十岁女性，干练职场风，语速偏快，逻辑感强，停顿精准 }. Content: { Speaker1以干脆利落的语气说：<S1><|sp|>这口锅不粘是真的，煎蛋不放油也能一整张滑下来，清水一冲就干净，懒人太需要了，省时省力。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十六岁男性，阳光大男孩型，中气足，感染力强，语速偏快 }. Content: { Speaker1以兴奋促销的语气说：<S1><|sp|>兄弟们别犹豫，这双跑鞋今天直接到手价，缓震够软还不闷脚，想入就趁现在，晚了就涨。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十二岁女性，播音腔，字正腔圆，气息饱满，节奏稳如主播 }. Content: { Speaker1以正式播报的语气说：<S1><|sp|>今晚八点整准时开抢，限量名额先到先得，错过就没有补货，想要的记得提前进直播间，别卡点。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十二岁女性，清亮嗓音偏脆，带俏皮感，句尾偶有拖音 }. Content: { Speaker1以轻松俏皮的语气说：<S1><|sp|>姐妹们我发誓，涂完这支口红嘴巴真的像开了柔焦，显白又不拔干，素颜都能提气色，还特别显嫩。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十八岁男性，磁性中低音，气声比例高，说话像在耳边，压迫感强 }. Content: { Speaker1以压低声线的语气说：<S1><|sp|>别出声，楼下那辆车又回来了。你把灯关了，我去看看后门，别让他们发现你，快点，别犹豫。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁女性，文艺气质，气息绵长，留白多，像在念散文 }. Content: { Speaker1以娓娓道来的语气说：<S1><|sp|>这盏小夜灯真的太懂人了，光不刺眼还很暖，半夜起来找水喝也不会吵醒家里人，放床头刚好。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十四岁男性，痞帅嗓音，略带懒散，吐字不拖但有态度感 }. Content: { Speaker1以带点怒气的语气说：<S1><|sp|>你把我当备选三次了，这次我不等了。门我给你关上，你也别再回头找我，我不想再演，别逼我。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十五岁女性，邻家姐姐型，声音带笑意，温暖有亲和力 }. Content: { Speaker1以耐心解释的语气说：<S1><|sp|>这款洗衣凝珠一颗顶两盖，香味不冲还留得久，最关键是机洗手洗都省事，衣领也干净，省下一大半。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 四十五岁男性，浑厚老练，语速舒缓，像长辈在唠家常 }. Content: { Speaker1以劝说的语气说：<S1><|sp|>你别硬扛了，先把这份保单看完，真出事了能兜底，家里人也不至于慌成一团，至少有底气。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十一岁女性，软糯撒娇音，语速适中，尾音带弯钩 }. Content: { Speaker1以开心分享的语气说：<S1><|sp|>我最近就靠这包低卡饼干续命，脆脆的还不齁甜，下午饿了来两片刚刚好，放包里也方便。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十岁女性，中性偏冷声线，咬字精准，情绪张力大但控制得住 }. Content: { Speaker1以郑重提醒的语气说：<S1><|sp|>别把真心当玩笑，你一句随便，我就得猜一整晚。你想要什么，直接说出来，别让我猜，好吗。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十七岁男性，温润书生音，气息稳，吐字圆润偏文雅 }. Content: { Speaker1以真诚告白的语气说：<S1><|sp|>我不是突然变得温柔，是终于承认我离不开你。你给我一次机会，我把余生都补给你，绝不食言。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十五岁男性，理工直男风，表达简洁高效，不带多余修饰，声音干净 }. Content: { Speaker1以自信推介的语气说：<S1><|sp|>这台净水器安装不用打孔，滤芯一拧就换，出来的水口感更清甜，烧水壶也不再结垢，家里用很安心。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十三岁女性，略带鼻音的柔和中音，语尾气声收束，委屈时音调微升 }. Content: { Speaker1以委屈压抑的语气说：<S1><|sp|>你说你忙，我信了；你说你累，我也信了。可你连一句晚安都省了，我还能怎么信你，告诉我。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十四岁女性，大嗓门活力型，中气十足，语速快，感染力外放 }. Content: { Speaker1以兴奋安利的语气说：<S1><|sp|>这台小风扇别看小，风量真不弱，还能当充电宝，通勤、露营都能用，性价比绝了，夏天必备。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十岁男性，痞中带暖，声音松弛慵懒，断句随性但不含糊 }. Content: { Speaker1以轻松调侃的语气说：<S1><|sp|>你再不回我消息，我就当你默认了。明天九点民政局见，别迟到，我怕我反悔，也怕你逃。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十九岁女性，沉稳知性，音色偏低，像深夜电台主持人 }. Content: { Speaker1以认真推荐的语气说：<S1><|sp|>这套床品面料很细，贴肤不扎还透气，夏天睡也不闷，洗几次依然软软的，躺下就想睡，真的舒服。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十五岁男性，嗓音偏亮偏紧，说话急促时气息短促，紧张感真实 }. Content: { Speaker1以紧张急促的语气说：<S1><|sp|>别问了，钱我已经转给他了。现在最重要的是你先走，手机关机，别让任何人定位到你，听见没。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十六岁女性，播音底子扎实，停连讲究，但不端架子，有生活气 }. Content: { Speaker1以温柔劝导的语气说：<S1><|sp|>别熬夜刷手机了，先把眼罩戴上再听一段白噪音，十分钟就能安静下来，睡得更沉，明天不累。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 四十二岁男性，老大哥型，嗓音宽厚接地气，说话实在不绕弯 }. Content: { Speaker1以可靠沉稳的语气说：<S1><|sp|>这把电动螺丝刀扭矩够、续航也长，家里装柜子、修门锁都能搞定，一套顶好几样，放车里也行。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十二岁女性，娇俏嗓音，语调起伏大，情绪外露，带小脾气 }. Content: { Speaker1以轻松撒娇的语气说：<S1><|sp|>你别装作不在意，我一转身你就慌了。要么现在抱我一下，要么就别再说喜欢我，我听腻了。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十二岁男性，邻家暖男音，音色中等偏柔，节奏从容不催 }. Content: { Speaker1以果断下单的语气说：<S1><|sp|>这个电饭煲一键就能煮出香软米饭，还能做蛋糕和酸奶，厨房小白也不翻车，真省心，做早饭更快。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁女性，嗓音略沙，慵懒低调，像刚喝完红酒微醺的松弛感 }. Content: { Speaker1以平静收尾的语气说：<S1><|sp|>今晚这杯酒我不喝了，账我也结了。你要追，就追到我心里来，别只追到门口就停，给个答案。<|sp|></S1> }."
+  Caption-CN-ToneShift-10to20s:
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十六岁女性，明亮中高音，前半句发力饱满，后半句明显收紧，尴尬时尾音发虚 }. Content: { Speaker1先理直气壮地说：<S1><|sp|>这题我闭着眼都不会错，答案肯定是我这个。<|sp|></S1> 随后被当场指出看错题后，窘迫地小声补一句：<S1><|sp|>啊，等一下，我刚刚好像把第二行漏看了。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十一岁男性，干脆中低音，先强势后泄气，转折时气口变短 }. Content: { Speaker1先底气十足地说：<S1><|sp|>我怎么可能迟到，时间我算得清清楚楚，绝对来得及。<|sp|></S1> 接着发现自己看错出发时间后，尴尬地改口：<S1><|sp|>呃，不对，车刚刚已经开走了，是我记岔了。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十四岁女性，俏皮清亮声线，先张扬外放，后半句发笑掩饰窘迫 }. Content: { Speaker1先斩钉截铁地说：<S1><|sp|>他今天肯定不敢来，嘴上说得凶，其实怂得很。<|sp|></S1> 结果看见对方推门进来后，她瞬间心虚地小声说：<S1><|sp|>那个，我刚刚就是随口一说，你别真的听见了。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十六岁女性，职场感女中音，前段利落强硬，后段语速放慢，遮不住难为情 }. Content: { Speaker1先很有把握地说：<S1><|sp|>这个方案不可能出问题，我昨天已经全部检查过一遍了。<|sp|></S1> 可当同事指出她传错版本后，她略显窘迫地补充：<S1><|sp|>好吧，我发出去的好像是上周那版，我现在马上重传。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十九岁男性，阳光外放型，中气足，后半句因尴尬而刻意压低 }. Content: { Speaker1先自信满满地说：<S1><|sp|>这道菜我早就练会了，今天肯定色香味俱全，你们等着夸我吧。<|sp|></S1> 看到锅里突然冒烟后，他有点慌地低声说：<S1><|sp|>先别拍，火可能开大了，我这盘大概救不回来了。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十三岁女性，播音感清晰咬字，起初笃定从容，后面声音发轻，带遮掩式尬笑 }. Content: { Speaker1先一本正经地说：<S1><|sp|>我绝对不会认错人，刚才走过去的就是我们要等的老师。<|sp|></S1> 等那人回头发现完全陌生后，她尴尬地笑着改口：<S1><|sp|>啊不好意思，背影实在太像了，当我没说。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十七岁男性，略带痞气的亮声，前半句逞强，后半句被戳破后明显发虚 }. Content: { Speaker1先嘴硬地说：<S1><|sp|>我根本没把她的话放在心上，删不删聊天记录都无所谓。<|sp|></S1> 可手机被当场点亮后，他马上窘迫地解释：<S1><|sp|>我留着不是舍不得，就是，就是怕以后要对账。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十岁女性，冷感中低音，先强势压人，后半句忽然泄劲，窘意明显 }. Content: { Speaker1先不容置疑地说：<S1><|sp|>你别担心，我已经把导航研究明白了，跟着我走绝对不会绕路。<|sp|></S1> 结果拐进死胡同后，她有些难堪地轻声说：<S1><|sp|>嗯，这条好像是施工便道，我们还是重新导一次吧。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十二岁女性，元气偏高音，前句夸张自信，后句被现实打脸后迅速缩回去 }. Content: { Speaker1先兴冲冲地说：<S1><|sp|>这娃娃机我一抓一个准，今天不给你空手回去。<|sp|></S1> 连续失手三次后，她不好意思地嘟囔：<S1><|sp|>今天这个爪子可能有点松，不然我平时真没这么菜。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十四岁男性，沉稳磁性中音，先老神在在，后半句被事实击中后明显发窘 }. Content: { Speaker1先胸有成竹地说：<S1><|sp|>放心，这个柜子我十分钟就能装好，说明书都不用看。<|sp|></S1> 可发现零件装反以后，他压低声音承认：<S1><|sp|>行吧，还是把说明书给我，我刚刚那步可能装颠倒了。<|sp|></S1> }."
+  Caption-CN-Pinyin-10to20s:
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十岁女性，大姐型爽朗嗓音，中气足，笑起来声音会亮半个调 }. Content: { Speaker1以边吐槽边带笑的语气说：<S1><|sp|>我在银行排队排到腿麻，前面那位还在办三张卡。为了这点折扣我跑来跑去，真不想再行了，你说我还得装开心吗？<|sp|></S1> }."
+      text: "<S1><|sp|>我在银<|py_hang2|>排队排到腿麻，前面那位还在办三张卡。为了这点折扣我跑来跑去，真不想再<|py_xing2|>了，你说我还<|py_dei3|>装开心吗？<|sp|></S1>"
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十六岁男性，磁性中音，气声混合质感好，低语时有压迫感 }. Content: { Speaker1以压低声线的语气说：<S1><|sp|>别再重复那句道歉了，重点不是你说了几遍，是你把我放在多重要的位置。今晚把门锁好，我来处理后面的事。<|sp|></S1> }."
+      text: "<S1><|sp|>别再<|py_chong2|><|py_fu4|>那句道歉了，重点不是你说了几遍，是你把我放在多<|py_zhong4|>的位置。今晚把门锁好，我来<|py_chu3|>理后面的事。<|sp|></S1>"
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十八岁女性，低沉烟嗓，咬字带棱角，讽刺时语速会刻意放慢 }. Content: { Speaker1以冷静讽刺的语气说：<S1><|sp|>这歌一响我就不乐意了，明明说好分手，你却把音乐开到最大。你要真快乐，就别回头找我，我也不再等。<|sp|></S1> }."
+      text: "<S1><|sp|>这歌一响我就不<|py_le4|>意了，明明说好分手，你却把音<|py_yue4|>开到最大。你要真快<|py_le4|>，就别回头找我，我也不再等。<|sp|></S1>"
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十三岁女性，元气少女音，声线高亮清脆，分享好物时语调雀跃 }. Content: { Speaker1以自然安利的语气说：<S1><|sp|>这瓶精华我连用两周，发丝都没那么毛躁了，脸也不紧绑。你别嫌步骤长，三步就够，早上涂完出门，晚上卸妆再补一次，稳。<|sp|></S1> }."
+      text: "<S1><|sp|>这瓶精华我连用两周，<|py_fa4|>丝都没那么毛躁了，脸也不紧绑。你别嫌步骤<|py_chang2|>，三步就够，早上涂完出门，晚上卸妆再补一次，稳。<|sp|></S1>"
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 四十岁男性，嗓音粗砺沧桑，像老刑警，每个字都砸得实 }. Content: { Speaker1以克制坚定的语气说：<S1><|sp|>欠我的你得还，别拿我还爱你当理由。你说这事不重要？我偏要你当场说清楚，现在，给我答案。<|sp|></S1> }."
+      text: "<S1><|sp|>欠我的你<|py_dei3|><|py_huan2|>，别拿我<|py_hai2|>爱你当理由。你说这事不<|py_zhong4|>要？我偏要你当场说清楚，现在，给我答案。<|sp|></S1>"
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十七岁女性，急性子高音量，语速快时吞字但不影响清晰度 }. Content: { Speaker1以急得发抖的语气说：<S1><|sp|>厨房又着了，你还站着刷短视频？把锅端下来先关气，再把窗子打开。别慌，火小了就能救回来。<|sp|></S1> }."
+      text: "<S1><|sp|>厨房又<|py_zhao2|>了，你还站<|py_zhe5|>刷短视频？把锅端下来先关气，再把窗子打开。别慌，火小了就能救回来。<|sp|></S1>"
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十九岁男性，温和书卷气，措辞讲究，停顿处有思考感 }. Content: { Speaker1以压低声线的语气说：<S1><|sp|>我明天出差，行程很紧，车票我已经订好。你别再说都一样，这次差一点点，我们就全错过了。<|sp|></S1> }."
+      text: "<S1><|sp|>我明天出<|py_chai1|>，<|py_xing2|>程很紧，车票我已经订好。你别再说都一样，这次<|py_cha4|>一点点，我们就全错过了。<|sp|></S1>"
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十二岁女性，柔中带倦的声线，尾音轻放像叹息，疲惫但认真 }. Content: { Speaker1以疲惫又认真解释的语气说：<S1><|sp|>别急着下结论，温度得量准。你上次随手一测就说我发烧，可那只是热饮烫的，今晚我是真的难受。<|sp|></S1> }."
+      text: "<S1><|sp|>别急着下结论，温度<|py_dei3|><|py_liang2|>准。你上次随手一测就说我<|py_fa1|>烧，可那只是热饮烫的，今晚我是真的难受。<|sp|></S1>"
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十五岁男性，闷骚型低音，平时话少，开口字字有分量 }. Content: { Speaker1以低声自嘲的语气说：<S1><|sp|>我没睡觉，只是闭着眼装镇定。你别问我有没有感觉，我当然有，心口像压了块石头，等天亮我们再谈。<|sp|></S1> }."
+      text: "<S1><|sp|>我没睡<|py_jiao4|>，只是闭着眼装镇定。你别问我有没有感<|py_jue2|>，我当然有，心口像压了块石头，等天亮我们再谈。<|sp|></S1>"
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十五岁女性，甜辣混搭嗓音，日常甜美但吐槽时嘴角带刺 }. Content: { Speaker1以轻快推介的语气说：<S1><|sp|>这家店不但方便，还真便宜。你看同样的咖啡，第二杯直接半价。别说我会算计，我只是想把日子过得更轻松一点。<|sp|></S1> }."
+      text: "<S1><|sp|>这家店不但方<|py_bian4|>，还真<|py_pian2|>宜。你看同样的咖啡，第二杯直接半价。别说我会算计，我只是想把日子过得更轻松一点。<|sp|></S1>"
+  Caption-EN-10to20s:
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十出头男性，柔和中低音，慵懒加州风格，语句连贯圆滑 }. Content: { Speaker1以自然广告旁白的语气说：<S1><|sp|>Don't scroll, this coffee is smooth, low acid, and stays rich to the last sip.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十岁左右女性，温暖中音带笑意，略带气声，自然对话感 }. Content: { Speaker1以轻快推介的语气说：<S1><|sp|>This moisturizer feels light, absorbs fast, and leaves skin soft, not sticky.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 四十岁左右男性，深沉共鸣低音，权威但不急，新闻主播般厚重感 }. Content: { Speaker1以沉稳推荐的语气说：<S1><|sp|>One card, real savings, groceries, fuel, and dining discounts add up quickly.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十出头女性，活泼高音，语调上扬，俏皮有活力 }. Content: { Speaker1以俏皮带货的语气说：<S1><|sp|>This lipstick makes you look brighter, and it won't dry out your lips.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十五岁左右男性，有力中音，节奏紧凑有爆发力，自信感染力强 }. Content: { Speaker1以热情促销的语气说：<S1><|sp|>Tonight only, limited stock. Tap the link now, or it's gone by midnight.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁左右女性，克制的中高音，情绪内敛紧绷，停顿刻意 }. Content: { Speaker1以轻声旁白的语气说：<S1><|sp|>You said you were busy. I believed you, until I saw the message on your phone.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十五岁左右男性，沙哑低语声线，咬字短促，每个音节都带紧张感 }. Content: { Speaker1以压低声线的语气说：<S1><|sp|>Turn off the lights. If they come back, we leave through the back door.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十出头女性，浑厚女低音，气场外放，句句掷地有声 }. Content: { Speaker1以坚定告白的语气说：<S1><|sp|>I'm not your backup plan. Choose me now, or never ask me again.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十出头男性，亲和男高音，邻家暖男感，声音随时带笑意 }. Content: { Speaker1以轻松安利的语气说：<S1><|sp|>This pan is truly nonstick, eggs slide right off, and cleanup takes seconds.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十五岁左右女性，轻柔高音带气声，安抚感强如摇篮曲 }. Content: { Speaker1以温柔分享的语气说：<S1><|sp|>This night light is soft and warm, great for late nights without waking anyone.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十八岁左右男性，清晰播音中低音，节奏沉稳，专业感强 }. Content: { Speaker1以专业旁白的语气说：<S1><|sp|>This water filter installs in minutes, and the taste is noticeably cleaner.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十出头女性，冷感低音，刻意平淡，冰女王般从容 }. Content: { Speaker1以克制冷淡的语气说：<S1><|sp|>You can keep your excuses. I'm walking away, and I won't turn back this time.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁左右男性，天鹅绒般柔声，黑色电影旁白质感，字字有分量 }. Content: { Speaker1以轻声叙述的语气说：<S1><|sp|>I kept the evidence for three years. Tonight, I only need one honest answer.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十五岁左右女性，明快中音，节奏轻快有说服力，不咄咄逼人 }. Content: { Speaker1以带货口吻说：<S1><|sp|>This laundry pod is easy to use, smells clean, and you only need one per load.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 四十八岁左右男性，沧桑中低音，父辈般沉稳，用词谨慎如可信赖的长辈 }. Content: { Speaker1以认真推荐的语气说：<S1><|sp|>This insurance plan can protect your family when things go wrong. It's worth it.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十出头女性，活力高音，语速快，热情有感染力 }. Content: { Speaker1以轻快安利的语气说：<S1><|sp|>This mini fan is powerful and quiet, and it doubles as a portable charger too.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十五岁左右男性，紧绷沙哑嗓音，军人般短促节奏，紧迫但不喊叫 }. Content: { Speaker1以急促低声的语气说：<S1><|sp|>Get in the car. Don't look back. If they track your phone, we're finished.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁左右女性，蜜糖般中音，母性柔软，声音像毯子般温暖包裹 }. Content: { Speaker1以温柔哄人的语气说：<S1><|sp|>Stop crying. Hold my hand, take the umbrella, and I'll make you warm soup.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十五岁左右男性，俏皮男高音，语气带坏笑，反应机敏 }. Content: { Speaker1以带点玩笑的语气说：<S1><|sp|>If you don't reply, I'll take it as a yes. Nine a.m., tomorrow, don't be late.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十出头女性，丝滑低沉中音，ASMR般亲密感，齿音精准 }. Content: { Speaker1以认真安利的语气说：<S1><|sp|>These sheets feel silky and breathable, and they stay soft after many washes.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 四十出头男性，粗犷接地气嗓音，直来直去，实干可信 }. Content: { Speaker1以稳重推荐的语气说：<S1><|sp|>This screwdriver has strong torque and long battery life for quick fixes.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十五岁左右女性，清亮高音带真诚颤音，脆弱但不软弱 }. Content: { Speaker1以真诚告白的语气说：<S1><|sp|>I wasn't being kind suddenly. I finally admitted I can't live without you.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十出头男性，冷硬中音，平直决绝，像已经释然的人 }. Content: { Speaker1以坚定决绝的语气说：<S1><|sp|>You saved your goodbye for later. I'm saving my life for now. We're done.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十八岁左右女性，明亮生动表达，电视主持人般精致，重点词强调到位 }. Content: { Speaker1以兴奋推介的语气说：<S1><|sp|>This rice cooker does rice, yogurt, and cake with one button, no skills needed.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁左右男性，低沉沙哑耳语，几乎听不见的紧迫感，暗藏危险 }. Content: { Speaker1以轻声旁白的语气说：<S1><|sp|>I paid him already. Now you leave first. I'll handle the rest, no matter what.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁左右女性，阳光中音，邻家女孩亲和力，声音自带笑纹 }. Content: { Speaker1以轻松分享的语气说：<S1><|sp|>This high-protein yogurt is low sugar, filling, and tastes surprisingly good.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十出头男性，锐利男高音，拍卖师级节奏把控，层层递进制造紧迫感 }. Content: { Speaker1以正式促销的语气说：<S1><|sp|>Limited seats tonight. Tap the pinned link, lock your coupon, and save.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁左右女性，暗哑中低音，看透世事的从容，像已经释然 }. Content: { Speaker1以平静收尾的语气说：<S1><|sp|>I won't drink tonight. If you want me, come for my heart, not just the door.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁左右男性，运动型中低音，兄弟感十足，真诚直爽 }. Content: { Speaker1以自然旁白的语气说：<S1><|sp|>These running shoes are cushioned, breathable, and the price drops today only.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十五岁左右女性，天鹅绒般中音，睡前故事节奏，温暖消融紧张 }. Content: { Speaker1以温柔推荐的语气说：<S1><|sp|>This sleep mask blocks light, feels soft, and helps you fall asleep faster.<|sp|></S1> }."
+  Caption-KO-10to20s:
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十出头女性，清亮偏高音，节奏轻快，带亲和力 }. Content: { Speaker1以轻快带货的语气说：<S1><|sp|>여러분 잠깐만요, 이 클렌징 폼은 거품이 정말 촘촘해서 세안 후에도 당김이 거의 없어요.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十岁左右男性，中低音扎实，语速偏快，表达干脆 }. Content: { Speaker1以专业推荐的语气说：<S1><|sp|>이 멤버십 카드 하나면 주차도 되고 장보기 할인도 돼요, 한 달만 써도 본전 뽑습니다.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十五岁左右女性，温暖中音带笑意，略带气声，口吻自然 }. Content: { Speaker1以自然分享的语气说：<S1><|sp|>이 립스틱은 얇게 바르면 은은하고, 진하게 바르면 분위기가 확 달라져요, 입술도 안 건조해요.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十出头男性，紧绷沙哑嗓音，节奏短促，压迫感强 }. Content: { Speaker1以压低声线的语气说：<S1><|sp|>불 꺼, 아래 차가 또 돌아왔어. 뒷문으로 나가자, 발소리 내지 마.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十岁女性，播音腔，字正腔圆，气息饱满，节奏稳 }. Content: { Speaker1以正式播报的语气说：<S1><|sp|>오늘 밤 8시 정각, 한정 수량 선착순입니다. 놓치면 재입고 없어요, 지금 알림 설정하세요.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁女性，低沉带磁性，断句干脆，气场外放 }. Content: { Speaker1以冷静解说的语气说：<S1><|sp|>내가 아무렇지 않은 척한 건 참은 거야. 오늘은 문 꼭 잠가, 더는 내 마음대로 하지 마.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十七岁男性，阳光大男孩型，中气足，感染力强，语速偏快 }. Content: { Speaker1以兴奋促销的语气说：<S1><|sp|>이 러닝화 오늘만 이 가격이에요, 쿠션 진짜 부드럽고 발도 안 답답해요. 지금 바로 담으세요!<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 四十岁左右女性，知性温润，语尾轻柔，安抚感强 }. Content: { Speaker1以温柔安抚的语气说：<S1><|sp|>괜찮아, 먼저 약 붙이고 10분만 따뜻하게 찜질하자. 그러면 어깨가 훨씬 편해질 거야.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十五岁男性，理工直男风，表达简洁高效，声音干净 }. Content: { Speaker1以自信推介的语气说：<S1><|sp|>이 정수기는 설치가 간단해요. 필터는 돌려서 바로 교체, 물맛도 깔끔하고 주전자 물때도 줄어요.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十四岁男性，痞帅嗓音，略带懒散，吐字不拖但有态度 }. Content: { Speaker1以带点怒气的语气说：<S1><|sp|>세 번이나 나를 예비로 둔 거잖아. 이번엔 안 기다려. 문 닫을게, 다시는 돌아보지 마.<|sp|></S1> }."
+  Caption-JA-10to20s:
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十出头女性，明亮高音，节奏轻快，带少女感 }. Content: { Speaker1以轻快带货的语气说：<S1><|sp|>みんな待って、これ泡がきめ細かくて洗い上がりつっぱらない。敏感肌でも使いやすいよ。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十岁左右男性，中低音稳，语速适中，可信赖感强 }. Content: { Speaker1以专业推荐的语气说：<S1><|sp|>この会員カード一枚で、駐車も買い物も割引になります。家族で使えるのが本当に助かる。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十五岁左右女性，温暖中音带笑意，略带气声，自然对话感 }. Content: { Speaker1以自然分享的语气说：<S1><|sp|>このリップ、薄く塗ると上品で、重ねると一気に強めになるの。しかも乾きにくい。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十出头男性，低声耳语质感，节奏短促，紧迫感强 }. Content: { Speaker1以压低声线的语气说：<S1><|sp|>声を出すな。下の車、また戻ってきた。灯り消して、裏口から出よう。急げ。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十岁女性，播音腔，字正腔圆，气息饱满，节奏稳 }. Content: { Speaker1以正式播报的语气说：<S1><|sp|>今夜8時ちょうど、数量限定の先着販売です。なくなり次第終了、今すぐ通知をオンに。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁女性，御姐音，低沉带磁性，断句干脆，气场外放 }. Content: { Speaker1以冷静解说的语气说：<S1><|sp|>平気なふりをしてただけ。今夜は鍵をかけて、もう私の代わりに決めないで。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十七岁男性，阳光大男孩型，中气足，感染力强，语速偏快 }. Content: { Speaker1以兴奋促销的语气说：<S1><|sp|>このランニングシューズ、今日だけこの価格！クッション柔らかいし蒸れにくい、今すぐカートへ！<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 四十岁左右女性，知性温润，语尾轻柔，安抚感强 }. Content: { Speaker1以温柔安抚的语气说：<S1><|sp|>大丈夫、まず湿布を貼って、10分だけ温めよう。肩と首がだいぶ楽になるはず。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十五岁男性，理工直男风，表达简洁高效，声音干净 }. Content: { Speaker1以自信推介的语气说：<S1><|sp|>この浄水器、取り付けは簡単。フィルターはひねって交換できて、水の味もすっきりします。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十四岁男性，痞帅嗓音，略带懒散，态度感强 }. Content: { Speaker1以带点怒气的语气说：<S1><|sp|>俺を都合のいい選択肢にするな。もう待たない。扉は閉める、振り向いても遅い。<|sp|></S1> }."
+  Caption-Mixed-Long30s:
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十岁女性，中性偏冷声线，咬字锋利，切换中英文时语调无缝衔接 }. Content: { Speaker1以压抑又坚定的语气说：<S1><|sp|>你说一切都结束了，可我还站在原地。I waited for you for three years, not for excuses. 现在把真相说出来，say it clearly, 别再躲。然后我们各自走进夜色，从此不提。你以为沉默就能替你回答吗，you owe me that much. 我不是来求你回头的，I just need closure. 你看着我的眼睛，tell me you never cared, 我就转身走，绝不纠缠。But if you hesitate, even for a second, 那就说明你心里还有我，you still feel something. 那我们就别再骗自己了，stop wasting time.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十五岁男性，磁性低音炮，气声控制精准，英文段落声线自然下沉 }. Content: { Speaker1以低声急促的语气说：<S1><|sp|>别回头，别停下。They are right behind us. 你把手机关机，把钥匙给我，我们从地下车库出去。Outside, no questions. Keep quiet. 别坐电梯，走楼梯，breathe，到了再说。Wait, 停一下，你听，那脚步声是不是停了？No, they're just regrouping. 我们不能停，一旦停下来就完了。You take the left corridor, I'll check the exit. 如果三分钟我没回来，你就自己走，go straight to the police station, don't look back. 记住，不管发生什么，don't open the door for anyone. 我会想办法脱身，trust me. 现在走，快，no sound, no light, just move. 到了车旁边直接上车，engine is already running. 锁好门，don't wait for me. 我从另一边绕，five minutes, 你就开走，drive to the safe house. 钥匙在遮阳板后面，everything is prepared. Go now.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十三岁女性，元气甜嗓，语速快但不乱，中英切换像在逛街闲聊 }. Content: { Speaker1以轻快带货的语气说：<S1><|sp|>姐妹们这套护肤太省事了，早上三步搞定。And yes, it feels light and fresh. 晚上卸妆后一涂，脸会很软。Next morning, you glow，妆也更服帖，直播间今天还送小样，囤一套更划算。我用了两周，毛孔真的细了，skin texture is so much smoother. 你们看我的手背和脸，色差几乎没了，even tone, no filter needed. 而且它不搓泥，后面叠防晒也完全没问题，no pilling at all. 限时两件八折，don't miss it.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 四十岁男性，沧桑沙哑嗓，叙事节奏像老电影旁白，英文部分带低回沉思 }. Content: { Speaker1以沉稳旁白的语气说：<S1><|sp|>他把门关上那一刻，我才明白自己输了。You don't have to forgive me, I know. 只要告诉我，那个雨夜你有没有真的来过。One word is enough，我就当作解脱。Please, don't lie. 我在这座城市等了三年，every corner reminds me of you. 你说时间会冲淡一切，but time only makes the silence louder. 今晚我站在这里，not to beg, 只是想亲耳听你说一句真话。If you ever loved me, even once, 那就别用沉默送我走，give me that much.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十二岁女性，邻家姐姐暖音，说产品细节时变得条理分明，英文穿插自然不做作 }. Content: { Speaker1以自然推荐的语气说：<S1><|sp|>这口锅真的不粘，煎蛋滑下来像溜冰。It saves time, it saves oil. 煎牛排也能封汁，少烟不呛。平底烙饼也脆，锅底受热很匀。锅盖一盖还能焖菜，台面也干净。尺寸刚好，灶台也不占地。No smoke, no mess. 清洗特别方便，清水一冲就干净，even eggs won't stick. 炖汤也行，小火慢煮不糊不焦，perfect for slow cooking. 手柄不烫手，oven safe. 一口锅搞定煎炒焖炖，you really only need this one. 今天直播间比旗舰店便宜一百多，grab it while it lasts.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十五岁男性，冷感少年音，语调平直如刀锋，英文段落更冷更狠 }. Content: { Speaker1以冷淡决绝的语气说：<S1><|sp|>你一句再等等，我等了整整一年。I'm done waiting. 从现在开始，你的沉默就是答案，我也不会再给你台阶下。Don't call me later，我不会接。I won't wait. No more chances. 你以为我会一直站在原地吗，you think I have nowhere else to go? 我已经把你的东西都收好了，everything is in the box by the door. 你随时来拿，but don't expect a conversation. 我不是在赌气，I'm just finally being honest with myself. 你从来就没选过我，and I'm done being your maybe.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁女性，柔软气声为主，像在耳边轻语，英文部分更轻更慢 }. Content: { Speaker1以温柔哄人的语气说：<S1><|sp|>先别逞强，回家我给你煮汤。It's okay to be tired. 把外套披上，慢慢走，我们不赶时间。Just breathe. I'm here. 回去我再给你热一碗面，灯也给你留着，We can rest，明天再说。你不用什么都扛着，you don't have to be strong all the time. 靠在我肩膀上就好，I won't let go. 今晚什么都不想，just close your eyes. 我在呢，哪儿也不去，I promise.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十八岁男性，老大哥宽厚嗓音，讲技术参数时自带可信度，英文简短有力 }. Content: { Speaker1以专业推介的语气说：<S1><|sp|>这台净水器安装不麻烦，滤芯一拧就换。Clean taste, less scale. 给老人孩子喝更安心，烧水壶也不结垢。Long term, you save money，也省心不少。Everyday, just easy. 滤芯寿命一年以上，one replacement a year is enough. 出水量也大，接一壶水不用等半天，fast flow, no waiting. 废水比也很低，environmentally friendly. 放厨房不占地方，under sink installation. 一家人喝水做饭都用它，you'll taste the difference. 价格也不贵，worth every penny.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十六岁女性，略带鼻音的文艺腔，自嘲时声音微颤，英文段落透出倔强 }. Content: { Speaker1以低声自嘲的语气说：<S1><|sp|>我以为你会说对不起，结果你只说算了。That hurts more than silence. 今晚我走出这扇门，就当我们从没认真爱过。If you follow me, do it now，否则别再靠近。Just let me go. 我把那些照片都删了，every single one. 你送的东西我放在门口了，you can pick them up anytime. 我不想再半夜醒来翻你朋友圈了，it's pathetic, I know. 但从今天起，I choose myself. 你不必内疚，just forget I existed.<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十七岁男性，阳光运动型嗓音，中气足音量大，英文段落节奏更密 }. Content: { Speaker1以兴奋促销的语气说：<S1><|sp|>兄弟们这双鞋今天到手价太香了，缓震软还不闷脚。Lightweight and comfy. 跑步、通勤都能穿，走一天也不累。Grab it now, 两双还能叠券，拍错尺码也能秒换。Last call, order now, 别拖到涨价。鞋底抓地力特别强，wet surfaces, no slipping. 网面透气，夏天穿也不闷，breathable mesh. 颜色好几个都好看，black, white, grey, all in stock. 今天下单还送运动袜，free socks with every pair. 链接挂上了，tap it before it's gone.<|sp|></S1> }."
+  Caption-Multi-Mixed-20s:
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十五岁女性，干练冷静，语速稳定，像项目经理在控场, Speaker2: 二十七岁男性，年轻工程师声线，略紧张但反应快，英文词衔接自然 }. Content: { Speaker1压着火气说：<S1><|sp|>这个版本为什么又晚了，ten o'clock 的上线窗口已经错过了。<|sp|></S1> Speaker2赶紧解释：<S2><|sp|>接口那边临时改了 schema，我不是故意拖，是刚刚才把 bug patch 完。<|sp|></S2> Speaker1追问：<S1><|sp|>那你现在给我一句准话，can we ship tonight or not？<|sp|></S1> Speaker2深吸一口气回答：<S2><|sp|>能，我再做一轮回归，十一点前给你 final build。<|sp|></S2> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁男性，低声急促，带明显警觉感, Speaker2: 二十六岁女性，呼吸稍乱，紧张中努力保持镇定 }. Content: { Speaker1压低声音说：<S1><|sp|>别看后视镜，the black car is still behind us。<|sp|></S1> Speaker2紧张地问：<S2><|sp|>你确定不是巧合吗，它已经跟了我们三条街了。<|sp|></S2> Speaker1更快地说：<S1><|sp|>我很确定，等下红灯一停你就下车，go straight into the mall。<|sp|></S1> Speaker2迟疑了一秒后答应：<S2><|sp|>好，那你手机别关，我进去以后立刻给你发定位。<|sp|></S2> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十四岁女性，元气带货音，节奏快，感染力强, Speaker2: 三十岁男性，搭档型中音，接话顺滑，强调产品点时更有力 }. Content: { Speaker1兴奋开场：<S1><|sp|>姐妹们看这里，这件外套 today only 直接打到五折，版型真的绝。<|sp|></S1> Speaker2马上接话：<S2><|sp|>而且不是只好看，里层加绒，windproof 也做得不错，北方现在穿正合适。<|sp|></S2> Speaker1补充追单：<S1><|sp|>小个子也能穿，我刚才试过完全不压身高，拍照特别上镜。<|sp|></S1> Speaker2收口催单：<S2><|sp|>库存只剩最后两百件，link 已经挂上了，喜欢就直接拍。<|sp|></S2> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十二岁女性，克制发颤，情绪压着不外放, Speaker2: 四十岁男性，沉稳低音，带安抚意味 }. Content: { Speaker1低声问：<S1><|sp|>医生刚才说的意思，是不是情况比我们想的 worse？<|sp|></S1> Speaker2尽量平静地回答：<S2><|sp|>没有到最坏那一步，只是今晚必须先观察，you have to stay calm。<|sp|></S2> Speaker1吸了口气又问：<S1><|sp|>那如果她半夜醒了，第一个想见的人还是我，对吗？<|sp|></S1> Speaker2放轻语气说：<S2><|sp|>当然，你先别哭，等会儿我陪你一起进去。<|sp|></S2> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十一岁男性，热血直球，语速偏快，情绪外放, Speaker2: 二十岁女性，清亮中高音，嘴硬但带笑 }. Content: { Speaker1不服气地说：<S1><|sp|>你刚才那球明明踩线了，come on，别装没看到。<|sp|></S1> Speaker2立刻回嘴：<S2><|sp|>踩没踩线我比你清楚，输一分而已，你别急着找借口。<|sp|></S2> Speaker1笑了一下：<S1><|sp|>行，那最后一球再来一次，if I win，晚上奶茶你请。<|sp|></S1> Speaker2挑衅地应声：<S2><|sp|>没问题，你先赢了再说，我连口味都替你想好了。<|sp|></S2> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十四岁女性，利落带笑，像姐姐在指挥做饭, Speaker2: 三十六岁男性，居家暖声，偶尔英文插词显得随意自然, Speaker3: 十三岁男孩，少年音清亮，插话直接 }. Content: { Speaker1一边切菜一边说：<S1><|sp|>先别急着下锅，oil 还没热，蒜末现在放会直接发苦。<|sp|></S1> Speaker2举着锅铲回应：<S2><|sp|>我知道，我这是在试温度，你别每次都把我当 kitchen rookie。<|sp|></S2> Speaker3在旁边插话：<S3><|sp|>可是爸，锅已经冒烟了，我觉得它现在挺生气的。<|sp|></S3> Speaker1没忍住笑出来：<S1><|sp|>听见没，连你儿子都看出来了，先关小火，我们今晚还想正常吃饭。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十九岁女性，冷静警惕，句尾收得干净, Speaker2: 三十一岁男性，低沉稳重，决策感强 }. Content: { Speaker1快步说：<S1><|sp|>钥匙是不是落在楼上了，我包里没有，this is bad。<|sp|></S1> Speaker2立即判断：<S2><|sp|>先别慌，你站我后面，我去服务台问监控。<|sp|></S2> Speaker1压低声音提醒：<S1><|sp|>刚才那个戴帽子的男人也下来了，我总觉得他在跟着我们。<|sp|></S1> Speaker2简短回应：<S2><|sp|>看见了，你现在只管往亮的地方走，don't stop。<|sp|></S2> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十五岁女性，鼻音微重，像刚哭过但努力装轻松, Speaker2: 二十七岁男性，温柔低音，回话很慢 }. Content: { Speaker1故作随意地说：<S1><|sp|>你不用特地送我回去，it's just rain，我自己能走。<|sp|></S1> Speaker2看着她回答：<S2><|sp|>伞都在我手里了，你现在逞强也没有说服力。<|sp|></S2> Speaker1沉默两秒后小声说：<S1><|sp|>那你送到路口就行，别再往前了，我怕自己会舍不得。<|sp|></S1> Speaker2放轻声音：<S2><|sp|>好，我送到路口，但你要是真的难受，就别再说没事。<|sp|></S2> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十三岁男性，创业者式快节奏表达，脑子转得快, Speaker2: 二十八岁女性，产品经理口吻，逻辑清楚，英文术语自然嵌入, Speaker3: 二十四岁男性，实习生少年感，回答直给 }. Content: { Speaker1快速安排：<S1><|sp|>下午 investor call 之前，我们得把 deck 最后两页改掉，story 现在还不够 sharp。<|sp|></S1> Speaker2马上接上：<S2><|sp|>我同意，特别是 growth 那张图，趋势线太乐观，if they ask details 我们会很被动。<|sp|></S2> Speaker3有点心虚地说：<S3><|sp|>那个图是我昨晚先放的占位版，我十分钟内能换成真实数据。<|sp|></S3> Speaker1语速放缓一点：<S1><|sp|>好，那就现在改，别怕出错，今天我们只要把真话讲漂亮。<|sp|></S1> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 三十岁女性，低声但果断，像在紧急做决定, Speaker2: 三十岁男性，呼吸略快，仍努力保持清醒 }. Content: { Speaker1快速说道：<S1><|sp|>门锁我已经换了，但如果他明天再来，we call the police immediately。<|sp|></S1> Speaker2迟疑着问：<S2><|sp|>你真的想好了吗，一旦报警，这事就不可能再装作没发生。<|sp|></S2> Speaker1更坚定地说：<S1><|sp|>我知道，所以我今晚才来找你，我不想再一个人扛。<|sp|></S1> Speaker2低声回应：<S2><|sp|>那就一起面对，你先进屋，我守在外面。<|sp|></S2> }."
+    - caption: "Environment: { 安静的室内录影棚环境，无明显背景噪音，人声清晰突出 } <BGM>BGM: { 无 }.</BGM> Speaker: { Speaker1: 二十八岁男性，疲惫中带歉意，英文部分更轻, Speaker2: 二十七岁女性，表面平静，内里发紧 }. Content: { Speaker1低声开口：<S1><|sp|>我不是不想留下，it's just this offer really matters to me。<|sp|></S1> Speaker2平静地回他：<S2><|sp|>我知道，所以我从头到尾都没拦你，我只是想听你亲口说。<|sp|></S2> Speaker1停顿后说：<S1><|sp|>等我安顿下来，我会第一时间接你过去，if you still want that future。<|sp|></S1> Speaker2轻轻笑了一下：<S2><|sp|>那你先别把未来说太满，先安全落地，再来兑现。<|sp|></S2> }."
+  Zero-shot-CN-10to20s:
+    - prompt_audio: prompts/双人bench_final/test/1-亲切美姨.wav 
+      local: "Content: { Speaker1说：<S1><|sp|>家人们别划走，这套洗护真的香而不冲，泡沫细腻，吹干以后头发顺到发光，打结都少了。<|sp|></S1> }."
+    - prompt_audio:  prompts/双人bench_final/test/1-健谈大爷.wav
+      local: "Content: { Speaker1说：<S1><|sp|>这支口红上嘴显白又不拔干，薄涂温柔厚涂气场，素颜也能立刻提气色，镜头也好看，显得更精神。<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/1-利落小哥哥.wav
+      local: "Content: { Speaker1说：<S1><|sp|>你说你没骗我，可我看见那条消息了。别解释了，我只想知道你到底选谁，今晚就说清，别再拖。<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/1-热情带货男声.wav
+      local: "Content: { Speaker1说：<S1><|sp|>别出声，楼道里有人。你把灯关了，钥匙给我，我们从后门悄悄出去，别让脚步声暴露，动作轻点。<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/1-爽朗大叔.wav
+      local: "Content: { Speaker1说：<S1><|sp|>这锅不粘是真的，煎蛋不放油也能整张滑下来，清水一冲就干净，省心又省时间，厨房必备。<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/1-爽朗大姐.wav
+      local: "Content: { Speaker1说：<S1><|sp|>兄弟们今天福利太大了，跑鞋直接到手价，缓震够软还透气，库存不多，想要就抓紧拍，手慢无。<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/1-稳重奶奶.wav
+      local: "Content: { Speaker1说：<S1><|sp|>我等了你三年，不是等一句算了。今晚把真相说出来，我就放你走，从此不再纠缠，也不再回头。<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/1-雅致大爷.wav 
+      local: "Content: { Speaker1说：<S1><|sp|>这台净水器安装不麻烦，滤芯一拧就换，水喝着更清甜，烧水壶也不结垢，家里用更安心。<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/2-乐天大爷.wav
+      local: "Content: { Speaker1说：<S1><|sp|>别熬夜了，戴上眼罩听点白噪音，十分钟就能安静下来，睡醒整个人都轻松，黑眼圈也淡。<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/2-清亮带货男声.wav 
+      local: "Content: { Speaker1说：<S1><|sp|>你别装作不在意，我一转身你就慌了。要么现在抱我一下，要么就别说爱了，别再骗我，我会走。<|sp|></S1> }."
+  Zero-shot-EN-10to20s:
+    - prompt_audio: prompts/双人bench_final/test/2-知性美姨.wav
+      local: "Content: { Speaker1说：<S1><|sp|>Don't scroll, this coffee is smooth, low acid, and rich to the last sip.<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/2-雅致靓姨.wav
+      local: "Content: { Speaker1说：<S1><|sp|>This moisturizer absorbs fast, feels light, and leaves skin soft, not sticky.<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/3-健谈大姐.wav
+      local: "Content: { Speaker1说：<S1><|sp|>Tonight only, limited stock. Tap the pinned link now, or it's gone by midnight.<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/3-干练直播女声.wav 
+      local: "Content: { Speaker1说：<S1><|sp|>You said you were busy. I believed you, until I saw the message on your phone.<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/3-活力小哥哥.wav
+      local: "Content: { Speaker1说：<S1><|sp|>Turn off the lights. If they come back, we leave through the back door.<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/3-热心姐姐.wav 
+      local: "Content: { Speaker1说：<S1><|sp|>I'm not your backup plan. Choose me now, or never ask me again.<|sp|></S1> }."
+    - prompt_audio:  prompts/双人bench_final/test/3-磁音直播男声.wav
+      local: "Content: { Speaker1说：<S1><|sp|>This pan is truly nonstick, eggs slide right off, and cleanup takes seconds.<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/4-亲切大爷.wav 
+      local: "Content: { Speaker1说：<S1><|sp|>Stop crying. Hold my hand, take the umbrella, and I'll make you warm soup.<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/4-亲和奶奶.wav
+      local: "Content: { Speaker1说：<S1><|sp|>If you don't reply, I'll take it as a yes. Nine a.m., tomorrow, don't be late.<|sp|></S1> }."
+    - prompt_audio: prompts/双人bench_final/test/4-活力大爷.wav 
+      local: "Content: { Speaker1说：<S1><|sp|>I won't drink tonight. If you want me, come for my heart, not just the door.<|sp|></S1> }."
+  Zero-shot-Multi-Mixed-20s:
+    - prompt_audios:
+        - prompts/双人bench/无声场男/5-阳光男生.wav
+        - prompts/双人bench/无声场女/3-热心姐姐.wav
+      local: "Content: { Speaker1急急地说：<S1><|sp|>快点看手机，the venue just changed to Hall B。<|sp|></S1> Speaker2一边找票一边回：<S2><|sp|>你别吓我，我刚排了二十分钟队，二维码还在原来的页面。<|sp|></S2> Speaker1催促道：<S1><|sp|>别管了，先跟我跑，staff 已经在那边开始检票了。<|sp|></S1> Speaker2喘着气说：<S2><|sp|>行，你带路，我今天可不想飞了半个城还进不去。<|sp|></S2> }."
+    - prompt_audios:
+        - prompts/双人bench/无声场女/3-热心姐姐.wav
+        - prompts/双人bench/有声场男/3-活力大叔.wav
+      local: "Content: { Speaker1压低声音说：<S1><|sp|>你别现在冲进去，wait，先听我把话说完。<|sp|></S1> Speaker2忍着火气回答：<S2><|sp|>我已经忍了一晚上了，他刚才当着所有人把责任推给你。<|sp|></S2> Speaker1很快接上：<S1><|sp|>所以更不能乱，录音我已经拿到了，ten minutes later 我们一起进去。<|sp|></S1> Speaker2停了停后说：<S2><|sp|>好，那这次我听你的，但他别想再轻松翻篇。<|sp|></S2> }."
+    - prompt_audios:
+        - prompts/双人bench_final/有声场女/1-干练白领.wav
+        - prompts/双人bench_final/有声场女/3-魅力女导购.wav
+      local: "Content: { Speaker1带笑开场：<S1><|sp|>直播间的朋友看一下，这台 blender 真不是只能打果汁。<|sp|></S1> Speaker2马上补充：<S2><|sp|>对，ice crush、soy milk、baby food，one machine 搞定，清洗也特别快。<|sp|></S2> Speaker1追着解释：<S1><|sp|>而且噪音没有你们想的那么大，早上做早餐不会把全家都吵醒。<|sp|></S1> Speaker2收尾催单：<S2><|sp|>链接已经开了，想要省时间的直接拍，今天有 extra cup 一起送。<|sp|></S2> }."
+    - prompt_audios:
+        - prompts/双人bench_final/无声场女/4-温润大姐.wav
+        - prompts/双人bench_final/有声场女/1-干练白领.wav
+      local: "Content: { Speaker1小声问：<S1><|sp|>她在里面真的没事吗，医生刚才为什么突然把我们都叫出来。<|sp|></S1> Speaker2温声安抚：<S2><|sp|>是临时加一项检查，不是 emergency，你先把呼吸放慢。<|sp|></S2> Speaker1眼眶发酸地说：<S1><|sp|>我以为我已经准备好了，可真到这一刻还是 panic。<|sp|></S1> Speaker2轻轻回应：<S2><|sp|>没关系，我陪着你，灯亮之前我们都不走。<|sp|></S2> }."
+    - prompt_audios:
+        - prompts/双人bench_final/有声场女/3-魅力女导购.wav
+        - prompts/双人bench/有声场男/3-活力大叔.wav
+      local: "Content: { Speaker1笑着挑衅：<S1><|sp|>你刚才那局赢得太侥幸了，one more round，我肯定翻盘。<|sp|></S1> Speaker2不服输地回：<S2><|sp|>行啊，但你别输了又说是球拍不顺手。<|sp|></S2> Speaker1立刻接：<S1><|sp|>我今天状态正热，你先想好奶茶怎么请。<|sp|></S1> Speaker2哼了一声：<S2><|sp|>先把发球接稳再说，我连你的口味都懒得记。<|sp|></S2> }."
+    - prompt_audios:
+        - prompts/2spk/2-1.wav
+        - prompts/2spk/4-2.wav
+        - prompts/双人bench/有声场男/3-活力大叔.wav
+      local: "Content: { Speaker1一边翻锅一边说：<S1><|sp|>这个牛排再等三十秒，medium rare 才会刚刚好。<|sp|></S1> Speaker2立刻拆台：<S2><|sp|>可你锅都快烧干了，我觉得它现在比较像 medium smoke。<|sp|></S2> Speaker3在旁边认真补刀：<S3><|sp|>我闻到了，真的有一点糊，而且 smoke alarm 好像要响了。<|sp|></S3> Speaker1尴尬地改口：<S1><|sp|>行行行，那先关火，今晚我们就当它是炙烤风味。<|sp|></S1> }."
+    - prompt_audios:
+        - prompts/2spk/4-2.wav
+        - prompts/双人bench_final/有声场女/1-干练白领.wav
+        - prompts/双人bench/无声场男/5-阳光男生.wav
+      local: "Content: { Speaker1快速安排：<S1><|sp|>下午三点前我们得把 proposal 改完，不然 client call 会很难看。<|sp|></S1> Speaker2有点迟疑地说：<S2><|sp|>我能改文案，但预算表还缺最后一列数据。<|sp|></S2> Speaker3马上接话：<S3><|sp|>那个数据我刚从 finance 拿到，give me five minutes，我现在发群里。<|sp|></S3> Speaker1松了口气：<S1><|sp|>好，那就按新版重排，今天这单我们必须拿下。<|sp|></S1> }."
+    - prompt_audios:
+        - prompts/双人bench/有声场男/3-活力大叔.wav
+        - prompts/双人bench/无声场女/2-知性美姨.wav
+      local: "Content: { Speaker1低声说：<S1><|sp|>你先别回头，the man in black has been following us since the station。<|sp|></S1> Speaker2捏紧包带问：<S2><|sp|>你确定吗，我刚才还以为只是顺路。<|sp|></S2> Speaker1语速更快：<S1><|sp|>不顺路，他已经停了三次，等下进便利店你就直接报警。<|sp|></S1> Speaker2稳了稳情绪回答：<S2><|sp|>好，我进去就打，你别离我太远。<|sp|></S2> }."
+    - prompt_audios:
+        - prompts/双人bench/无声场女/2-知性美姨.wav
+        - prompts/双人bench/有声场男/3-活力大叔.wav
+      local: "Content: { Speaker1故作轻松地说：<S1><|sp|>你真的不用送了，I can handle this on my own。<|sp|></S1> Speaker2慢慢回她：<S2><|sp|>你每次说这句的时候，眼睛都会先红，我怎么可能信。<|sp|></S2> Speaker1沉默后低声道：<S1><|sp|>那你送我到前面路口就好，别再往前，我怕自己会改主意。<|sp|></S1> Speaker2很轻地答：<S2><|sp|>行，我送到路口，但你想回头的时候，我还在。<|sp|></S2> }."
+    - prompt_audios:
+        - prompts/双人bench/无声场男/1-利落小哥哥.wav
+        - prompts/双人bench/无声场女/4-飒爽小姐姐.wav
+      local: "Content: { Speaker1看着登机口说：<S1><|sp|>我没让你来送，是因为 I knew this goodbye would be hard。<|sp|></S1> Speaker2平静回他：<S2><|sp|>可你还是让我来了，不然你现在不会一直躲着看我。<|sp|></S2> Speaker1苦笑一下：<S1><|sp|>等我那边稳定下来，我就给你买往返都不用犹豫的票。<|sp|></S1> Speaker2轻轻收口：<S2><|sp|>好，先别急着许诺，land safely first，然后再来说以后。<|sp|></S2> }."
+    - prompt_audios:
+        - prompts/双人bench/无声场女/4-飒爽小姐姐.wav
+        - prompts/双人bench/有声场男/3-活力大叔.wav
+      local: "Content: { Speaker1压着怒气说：<S1><|sp|>你现在进去只会把局面搞乱，please trust me one more time。<|sp|></S1> Speaker2咬着牙回：<S2><|sp|>我不是不信你，我是怕他们再逼你一个人认下所有事。<|sp|></S2> Speaker1把文件递过去：<S1><|sp|>证据都在这里，等律师到了我们一起进去，今天谁都别想甩锅。<|sp|></S1> Speaker2终于点头：<S2><|sp|>好，那就按你说的来，这次我们一起把话讲到底。<|sp|></S2> }."

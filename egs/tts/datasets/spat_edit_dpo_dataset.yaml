@@ -1,0 +1,14 @@
+datasets:
+  __replace: true
+  audio_edit_dpo:
+    train_sets:
+    - /mnt/bn/sa-ag-data/leike/spatial_edit/triplet4_dpo/metadata_training4/audio_edit_dpo_train_latent.jsonl
+    weight: 1
+    processer_fn: tasks.tts.spat_audio_edit_dpo_task.processer_fn_dpo_jsonl
+    reader_chunk_size: 32
+
+load_wav: false
+use_precomputed_latents: true
+precomputed_latent_suffix: .spat_vae_posterior.pt
+dataloader_version: v2
+dataloader_use_weight: true

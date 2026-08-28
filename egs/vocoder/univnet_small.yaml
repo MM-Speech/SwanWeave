@@ -1,0 +1,12 @@
+base_config: ./univnet.yaml
+
+# gen
+gen:
+  noise_dim: 64
+  channel_size: 12 # 32 or 16
+  dilations: [ 1, 3, 9, 27 ]
+  strides: [ 8, 8, 4 ]
+  lReLU_slope: 0.2
+  kpnet_conv_size: 3
+max_samples: 20480
+max_sentences: 16

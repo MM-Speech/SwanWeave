@@ -1,0 +1,91 @@
+datasets:
+  zhiyuexingchen_datasets_120wh:
+    binary_data_root:
+      default: /mnt/bn/sa-ag-data/liruiqi/data/speech/zhiyuexingchen/processed_251113
+      lq_nas: /mnt/bn/sa-ag-data/liruiqi/data/speech/zhiyuexingchen/processed_251113  
+      va_nas: /mnt/bn/genai-data2/liruiqi/data/speech/zhiyuexingchen/processed_251113
+    train_sets:
+    - cn_podcast_apple
+    - cn_podcast_xyz
+    - cn_audiobook_xmly
+    weight: 0.1
+    processer_fn: tasks.tts.dataset_utils.swan_base_fastdataset.processer_fn_zyxc_1spk
+    reader_chunk_size: 2
+  zhiyuexingchen_en_datasets_2000wh:
+    train_sets:
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_0_4.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_5_9.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_10_14.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_15_19.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_20_24.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_25_29.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_30_34.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_35_39.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_40_45.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_46_49.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_50_54.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_55_59.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_60_64.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_65_69.jsonl
+    weight: 0.1
+    processer_fn: tasks.tts.dataset_utils.swan_base_fastdataset.processer_fn_jsonl
+    reader_chunk_size: 2
+    read_idx: True
+  megatts_datasets_70wh:
+    binary_data_root: 
+      default: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+      lq_hdfs: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+      va_hdfs: hdfs://harunava/home/byte_ad_applied_vision/user/liruiqi/data/binary_v3_sorted
+    train_sets: 
+    - sa_data_v1
+    - sami_data_v1
+    - small_sets_v1
+    - audible_v1
+    - evelabs_v1
+    - film_v1
+    - gigaspeech_v1
+    - libriheavy_v1
+    - xmly_v1
+    - pirbay_v1
+    - dt_child_v1
+    - sami_inhouse202310_v1
+    - audiobook_v1
+    - changting202310_v1
+    - changting_v1
+    - ytb_v1
+    - resso_v1
+    - xyz_v1
+    - wenetspeech_v1
+    weight: 1.0
+    processer_fn: tasks.tts.dataset_utils.swan_base_fastdataset.processer_fn_megatts3
+    reader_chunk_size: 64
+  robust_mega3_500h:
+    binary_data_root:
+      default: /mnt/bn/sa-ag-data/liruiqi/data/speech/robust_mega3/gen_251211/binary
+      lq_nas: /mnt/bn/sa-ag-data/liruiqi/data/speech/robust_mega3/gen_251211/binary
+      va_hdfs: hdfs://harunava/home/byte_advertising_genai/20250808/liruiqi/data/robust_mega3_251211
+    train_sets:
+    - en_hard
+    - gcide
+    - mix_zh_en
+    - zh_gen_char
+    - zh_hard
+    weight: 0.001
+    processer_fn: tasks.tts.dataset_utils.swan_base_fastdataset.processer_fn_robust_mega3
+    reader_chunk_size: 16
+load_wav: True
+dataloader_version: v2
+dataloader_use_weight: True
+
+is_debug_run: False
+debug_run_dataset:
+  megatts_datasets_70wh:
+    binary_data_root: 
+      default: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+      lq_hdfs: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+      va_hdfs: hdfs://harunava/home/byte_ad_applied_vision/user/liruiqi/data/binary_v3_sorted
+    train_sets: 
+    - sa_data_v1
+    weight: 1.0
+    processer_fn: tasks.tts.dataset_utils.swan_base_fastdataset.processer_fn_megatts3
+    reader_chunk_size: 64

@@ -1,0 +1,69 @@
+base_config:
+- egs/tts/config_base.yaml
+- egs/asr/datasets/nepa_dataset_v2_260122.yaml
+
+fft_size: 800
+hop_size: 160
+win_size: 800
+audio_sample_rate: 16000
+f0_max: 600
+f0_min: 60
+fmax: 8000
+fmin: 0
+loud_norm: false
+audio_num_mel_bins: 160
+
+# task
+task_cls: tasks.asr.nepa_task.NepaTask
+
+# data
+frames_multiple: 4
+dataset_cls: tasks.asr.dataset_utils.nepa_fastdataset_v2.NepaShmDataset
+val_dataset_cls: tasks.tts.dataset_utils.tts_datasets.DiTWavTextDataset
+use_audio_dataset: False
+fast_ds_prefetch_steps: 64
+
+# dataloader
+eval_max_batches: 0
+ds_workers: 14
+max_tokens: 60000
+max_sentences: 200
+max_frames: 30000   # 5min
+min_frames: 100
+tgt_size_max: 6000  # 120 sec
+tgt_size_min: 6000
+
+# model
+nepa_loss_type: infonce
+nepa_infonce_neighbor_window: 4
+nepa_strides: [16, 10, 4]
+nepa_encoder_mode: overlap_causal
+nepa_encoder_kernels: [20, 12, 6]   # > strides
+nepa_encoder_pad_mode: learned     # replicate | learned
+nepa_encoder_dims: [32, 128, 512]
+nepa_hidden_size: 512
+nepa_num_hidden_layers: 16
+nepa_num_attention_heads: 8
+nepa_num_key_value_heads: 8
+nepa_encoder_norm: rmsnorm
+nepa_pred_steps: [1, 2, 4]
+
+load_ckpt: ''
+use_fsdp: false
+gradient_checkpointing: false
+
+# training
+scheduler_lr_min: 4.0e-5
+cudnn_benchmark: false
+
+# noise
+wav_add_noise: False
+wav_add_effect: True
+musan_dir: /mnt/bn/sa-ag-data/liruiqi/data/speech/musan
+musan_with_speech: False
+wav_add_noise_prob: 0.05
+wav_add_effect_prob: 0.1
+wav_mix_prob: 0.1
+wav_mix_alpha_range: [0.4, 0.6]
+
+tb_log_interval: 1

@@ -1,0 +1,113 @@
+datasets:
+  concat_20_300s_200k:
+    binary_data_root:
+      default: /mnt/bn/sa-ag-data/liruiqi/data/speech/alignment/concat_20_300s_200k_aligned
+      lq_nas: /mnt/bn/sa-ag-data/liruiqi/data/speech/alignment/concat_20_300s_200k_aligned
+    train_sets:
+    - concat_20_300s_200k.jsonl.aligned.qwen3aligner.shard000000.jsonl
+    - concat_20_300s_200k.jsonl.aligned.qwen3aligner.shard000001.jsonl
+    weight: 0.2
+    processer_fn: tasks.asr.dataset_utils.aligner_fastdataset_v2.processer_fn_qwen3aligner
+    reader_chunk_size: 4
+    read_idx: True
+  emilia_zh_en_sample:
+    binary_data_root:
+      default: /mnt/bn/sa-ag-data/liruiqi/data/speech/alignment/emilia_zh_en_sample_aligned
+      lq_nas: /mnt/bn/sa-ag-data/liruiqi/data/speech/alignment/emilia_zh_en_sample_aligned
+    train_sets:
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000000.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000001.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000002.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000003.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000004.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000005.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000006.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000007.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000008.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000009.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000010.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000011.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000012.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000013.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000014.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000015.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000016.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000017.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000018.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000019.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000020.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000021.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000022.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000023.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000024.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000025.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000026.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000027.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000028.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000029.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000030.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000031.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000032.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000033.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000034.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000035.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000036.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000037.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000038.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000039.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000040.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000041.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000042.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000043.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000044.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000045.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000046.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000047.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000048.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000049.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000050.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000051.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000052.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000053.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000054.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000055.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000056.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000057.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000058.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000059.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000060.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000061.jsonl
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000062.jsonl
+    weight: 1.0
+    processer_fn: tasks.asr.dataset_utils.aligner_fastdataset_v2.processer_fn_qwen3aligner
+    reader_chunk_size: 4
+    read_idx: True
+  robust_mega3:
+    binary_data_root:
+      default: /mnt/bn/sa-ag-data/liruiqi/data/speech/alignment/robust_mega3_aligned
+      lq_nas: /mnt/bn/sa-ag-data/liruiqi/data/speech/alignment/robust_mega3_aligned
+    train_sets:
+    - robust_mega3.jsonl.aligned.qwen3aligner.shard000000.jsonl
+    - robust_mega3.jsonl.aligned.qwen3aligner.shard000001.jsonl
+    - robust_mega3.jsonl.aligned.qwen3aligner.shard000002.jsonl
+    weight: 0.2
+    processer_fn: tasks.asr.dataset_utils.aligner_fastdataset_v2.processer_fn_qwen3aligner
+    reader_chunk_size: 4
+    read_idx: True
+  
+load_wav: True
+dataloader_version: v2
+dataloader_use_weight: True
+
+is_debug_run: False
+debug_run_dataset:
+  emilia_zh_en_sample:
+    binary_data_root:
+      default: /mnt/bn/sa-ag-data/liruiqi/data/speech/alignment/emilia_zh_en_sample_aligned
+      lq_nas: /mnt/bn/sa-ag-data/liruiqi/data/speech/alignment/emilia_zh_en_sample_aligned
+    train_sets:
+    - emilia_zh_en_sample.jsonl.aligned.qwen3aligner.shard000000.jsonl
+    weight: 1.0
+    processer_fn: tasks.asr.dataset_utils.aligner_fastdataset_v2.processer_fn_qwen3aligner
+    reader_chunk_size: 4
+    read_idx: True

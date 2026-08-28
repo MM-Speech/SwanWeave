@@ -1,0 +1,124 @@
+datasets:
+  megatts_datasets:
+    binary_data_root: 
+      default: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+      lq_hdfs: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+      va_hdfs: hdfs://harunava/home/byte_ad_applied_vision/user/liruiqi/data/binary_v3_sorted
+    train_sets: 
+    - sa_data_v1
+    - film_v1
+    - dt_child_v1
+    weight: 0.1
+    processer_fn: tasks.tts.dataset_utils.vae_fastdataset_v2.processer_fn_megatts3
+    reader_chunk_size: 64
+  zhiyuexingchen_datasets:
+    binary_data_root:
+      default: /mnt/bn/sa-ag-data/liruiqi/data/speech/zhiyuexingchen/processed_251113
+      lq_nas: /mnt/bn/sa-ag-data/liruiqi/data/speech/zhiyuexingchen/processed_251113
+      va_nas: /mnt/bn/genai-data2/liruiqi/data/speech/zhiyuexingchen/processed_251113
+    train_sets:
+    - cn_podcast_apple
+    weight: 1.5
+    processer_fn: tasks.tts.dataset_utils.vae_fastdataset_v2.processer_fn_zyxc_1spk
+    reader_chunk_size: 2
+  a2v_0.8M:
+    binary_data_root:
+      default: /mnt/bn/lq-ads-aigc3/data/speech/prompttts_va_binary/prompttts_0.8m_swan_caption
+      lq_nas: /mnt/bn/lq-ads-aigc3/data/speech/prompttts_va_binary/prompttts_0.8m_swan_caption
+    train_sets:
+    - baidunet
+    - bilibili230807
+    - bilibili_dance_240802
+    - bilibili_dance_240831
+    - bilibili_dance_240917
+    - dj_241218_2s_v1
+    - duanju_241202_2s_v1
+    - duanju_241202m11_2s_v1
+    - jichuang_avatar
+    - jichuang_haoxi
+    - jichuang_shengguang
+    - meiju_241214
+    - mogong_avatar
+    - movie_241202
+    - ted_241202
+    - tedx_241202
+    - xpc_2412v1
+    - xpc_2412v2
+    - youtube230807
+    - ytb_ads_241015
+    - ytb_zhengshu_2409
+    weight: 1.0
+    processer_fn: tasks.tts.dataset_utils.vae_fastdataset_v2.processer_fn_prompttts
+    reader_chunk_size: 64
+  waver_data_5611h:
+    binary_data_root:
+      default: /mnt/bn/lq-ads-aigc3/data/speech/prompttts_va_binary/hq_9m_pack_251117
+      lq_nas: /mnt/bn/lq-ads-aigc3/data/speech/prompttts_va_binary/hq_9m_pack_251117
+    train_sets:
+    - hq_9m_1spk.filter
+    - hq_9m_1spk_notenzh.filter
+    - hq_9m_audio.filter
+    - hq_9m_nspk_enzh_convert.filter
+    - hq_9m_nspk_notenzh_convert.filter
+    weight: 1.0
+    processer_fn: tasks.tts.dataset_utils.vae_fastdataset_v2.processer_fn_prompttts
+    reader_chunk_size: 64
+  vdatasets_1348h:
+    binary_data_root:
+      default: /mnt/bn/lq-ads-aigc3/data/speech/prompttts_va_binary/vdataset_narration_swan_caption
+      lq_nas: /mnt/bn/lq-ads-aigc3/data/speech/prompttts_va_binary/vdataset_narration_swan_caption
+    train_sets:
+    - vdataset_1spk_narration.filter
+    - vdataset_audio_narration.filter
+    - vdataset_nspk_convert.filter
+    weight: 1.0
+    processer_fn: tasks.tts.dataset_utils.vae_fastdataset_v2.processer_fn_prompttts
+    reader_chunk_size: 64
+  opensource_audio_322h:
+    train_sets:
+    - /mnt/bn/sa-ag-data/panchanghao/data/BGMAudio/metadata/audiocaps2.jsonl
+    - /mnt/bn/sa-ag-data/panchanghao/data/BGMAudio/metadata/audiocaps2_swan_caption_align.jsonl
+    weight: 0.1
+    processer_fn: tasks.tts.dataset_utils.vae_fastdataset_v2.processer_fn_mtg_jamendo
+    reader_chunk_size: 8
+    read_idx: True
+  mtg_jamendo_4000h:
+    train_sets:
+    - /mnt/bn/sa-ag-data/liruiqi/data/manifests/music/mtg_jamendo_manifest.tsv
+    weight: 1.0
+    processer_fn: tasks.tts.dataset_utils.vae_fastdataset_v2.processer_fn_mtg_jamendo
+    reader_chunk_size: 8
+  classic_music:
+    train_sets:
+    - /mnt/bn/sa-ag-data/liruiqi/data/manifests/music/classic_music_manifest.tsv
+    weight: 0.1
+    processer_fn: tasks.tts.dataset_utils.vae_fastdataset_v2.processer_fn_classic
+    reader_chunk_size: 32
+
+    
+load_wav: True
+dataloader_version: v2
+dataloader_use_weight: True
+
+is_debug_run: False
+debug_run_dataset:
+  megatts_datasets:
+    binary_data_root: 
+      default: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+      lq_hdfs: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+      va_hdfs: hdfs://harunava/home/byte_ad_applied_vision/user/liruiqi/data/binary_v3_sorted
+    train_sets: 
+    - sa_data_v1
+    weight: 1.0
+    processer_fn: tasks.tts.dataset_utils.vae_fastdataset_v2.processer_fn_megatts3
+    reader_chunk_size: 32
+  # zhiyuexingchen_datasets:
+  #   binary_data_root:
+  #     default: /mnt/bn/sa-ag-data/liruiqi/data/speech/zhiyuexingchen/processed_251113
+  #     lq_nas: /mnt/bn/sa-ag-data/liruiqi/data/speech/zhiyuexingchen/processed_251113
+  #     va_nas: /mnt/bn/genai-data2/liruiqi/data/speech/zhiyuexingchen/processed_251113
+  #   train_sets:
+  #   - cn_podcast_apple
+  #   weight: 1.0
+  #   processer_fn: tasks.tts.dataset_utils.vae_fastdataset_v2.processer_fn_zyxc_1spk
+  #   reader_chunk_size: 2

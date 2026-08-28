@@ -1,0 +1,218 @@
+datasets:
+  zhiyuexingchen_datasets_120wh:
+    binary_data_root:
+      default: /mnt/bn/sa-ag-data/liruiqi/data/speech/zhiyuexingchen/processed_251113
+      lq_nas: /mnt/bn/sa-ag-data/liruiqi/data/speech/zhiyuexingchen/processed_251113  
+      va_nas: /mnt/bn/genai-data2/liruiqi/data/speech/zhiyuexingchen/processed_251113
+    train_sets:
+    - cn_podcast_apple
+    - cn_podcast_xyz
+    - cn_audiobook_xmly
+    weight: 0.1
+    processer_fn: tasks.tts.dataset_utils.swan_base_fastdataset.processer_fn_zyxc_1spk
+    reader_chunk_size: 2
+  zhiyuexingchen_en_datasets_2000wh:
+    train_sets:
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_0_4.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_5_9.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_10_14.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_15_19.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_20_24.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_25_29.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_30_34.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_35_39.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_40_45.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_46_49.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_50_54.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_55_59.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_60_64.jsonl
+      - /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/panchanghao/zhiyuexingchen/meta_en/orig_zhiyuexingchen_en_meta_65_69.jsonl
+    weight: 0.1
+    processer_fn: tasks.tts.dataset_utils.swan_base_fastdataset.processer_fn_jsonl
+    reader_chunk_size: 2
+    read_idx: True
+  megatts_datasets_70wh:
+    binary_data_root: 
+      default: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+      lq_hdfs: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+      va_hdfs: hdfs://harunava/home/byte_ad_applied_vision/user/liruiqi/data/binary_v3_sorted
+    train_sets: 
+    - sa_data_v1
+    - sami_data_v1
+    - small_sets_v1
+    - audible_v1
+    - evelabs_v1
+    - film_v1
+    - gigaspeech_v1
+    - libriheavy_v1
+    - xmly_v1
+    - pirbay_v1
+    - dt_child_v1
+    - sami_inhouse202310_v1
+    - audiobook_v1
+    - changting202310_v1
+    - changting_v1
+    - ytb_v1
+    - resso_v1
+    - xyz_v1
+    - wenetspeech_v1
+    weight: 0.2
+    processer_fn: tasks.tts.dataset_utils.swan_base_fastdataset.processer_fn_megatts3
+    reader_chunk_size: 64
+  robust_mega3_500h:
+    binary_data_root:
+      default: hdfs://harunava/home/byte_advertising_genai/20250808/liruiqi/data/robust_mega3_251211
+      lq_nas: /mnt/bn/sa-ag-data/liruiqi/data/speech/robust_mega3/gen_251211/binary
+      va_hdfs: hdfs://harunava/home/byte_advertising_genai/20250808/liruiqi/data/robust_mega3_251211
+    train_sets:
+    - en_hard
+    - gcide
+    - mix_zh_en
+    - zh_gen_char
+    - zh_hard
+    weight: 0.1
+    processer_fn: tasks.tts.dataset_utils.swan_base_fastdataset.processer_fn_robust_mega3
+    reader_chunk_size: 16
+
+  # prompttts_0.8m: # for wav not vocal
+  #   train_sets:
+  #     - /mnt/bn/lq-ads-aigc3/data/speech/prompttts_va_meta/prompttts_swan_0.8m_wav.jsonl
+  #   weight: 1.0
+  #   processer_fn: tasks.tts.dataset_utils.swan_caption_fastdataset.processer_fn_jsonl
+  #   reader_chunk_size: 32
+  #   read_idx: True
+  # prompttts_2spk_31m: # 24m 0-10s +7m 10-60s
+  #   train_sets:
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_000.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_001.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_002.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_003.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_004.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_005.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_006.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_007.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_008.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_009.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_010.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_011.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/prompttts_0_10s_swan_caption/shard_part_012.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/process_data_251222/prompttts_2spk_swan_caption/duanju.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/process_data_251222/prompttts_2spk_swan_caption/movie.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/process_data_251222/prompttts_2spk_swan_caption/netflix.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/process_data_251222/prompttts_2spk_swan_caption/shortdrama.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/process_data_251222/prompttts_2spk_swan_caption/taobao.jsonl
+  #   weight: 1.0
+  #   processer_fn: tasks.tts.dataset_utils.swan_caption_fastdataset.processer_fn_jsonl
+  #   reader_chunk_size: 32
+  #   read_idx: True
+  xyz_20w:
+    train_sets:
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_000.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_001.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_002.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_003.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_004.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_005.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_006.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_007.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_008.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_009.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_010.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_011.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_012.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_013.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_014.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_015.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_016.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_017.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_018.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_019.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_020.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_021.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_022.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_023.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_024.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_025.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_026.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_027.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_028.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_029.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_030.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_031.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_032.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_033.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_034.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_035.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_036.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_037.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xyz_1spk_swan_caption/shard_part_038.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xys_nspk_swan_caption/shard_part_000.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xys_nspk_swan_caption/shard_part_001.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xys_nspk_swan_caption/shard_part_002.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xys_nspk_swan_caption/shard_part_003.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xys_nspk_swan_caption/shard_part_004.jsonl
+        - /mnt/bn/sa-ag-data/leike/data/metadata/xys_nspk_swan_caption/shard_part_005.jsonl
+    weight: 0.05
+    processer_fn: tasks.tts.dataset_utils.swan_caption_fastdataset.processer_fn_jsonl
+    reader_chunk_size: 32
+    read_idx: True
+  vdataset_1m:
+    binary_data_root:
+      default: /mnt/bn/lq-ads-aigc3/data/speech/prompttts_va_binary/vdataset_narration_swan_caption
+    train_sets:
+      - vdataset_1spk_narration.filter
+      - vdataset_nspk_convert.filter
+      # - vdataset_audio_narration.filter
+    weight: 1.0
+    processer_fn: tasks.tts.dataset_utils.swan_caption_fastdataset.processer_fn_binary
+    reader_chunk_size: 32
+  vdataset_7m: # hq_9m
+    binary_data_root:
+      default: /mnt/bn/lq-ads-aigc3/data/speech/prompttts_va_binary/hq_9m_swan_caption
+    train_sets:
+      # - hq_9m_audio.filter
+      - hq_9m_1spk.filter
+      # - hq_9m_1spk_notenzh.filter
+      # - hq_9m_nspk_enzh_convert.filter
+      # - hq_9m_nspk_notenzh_convert.filter
+    weight: 1.0
+    processer_fn: tasks.tts.dataset_utils.swan_caption_fastdataset.processer_fn_binary
+    reader_chunk_size: 32
+  # cnvdataset_4m:
+  #   train_sets:
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/zh_vdata/duanju_shorts_swan_caption.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/zh_vdata/kuaishou_swan_caption.jsonl
+  #     - /mnt/bn/sa-ag-data/leike/data/metadata/zh_vdata/rednotes_swan_caption.jsonl
+  #   weight: 1.0
+  #   processer_fn: tasks.tts.dataset_utils.swan_caption_fastdataset.processer_fn_jsonl
+  #   reader_chunk_size: 32
+  #   read_idx: True
+  # megatts_datasets_70wh:
+  #   binary_data_root: 
+  #     default: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+  #     lq_hdfs: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+  #     va_hdfs: hdfs://harunava/home/byte_ad_applied_vision/user/liruiqi/data/binary_v3_sorted
+  #   train_sets: 
+  #   - sa_data_v1
+  #   weight: 1.0
+  #   processer_fn: tasks.tts.dataset_utils.swan_base_fastdataset.processer_fn_megatts3
+  #   reader_chunk_size: 64
+
+
+
+load_wav: True
+dataloader_version: v2
+dataloader_use_weight: True
+
+is_debug_run: False
+debug_run_dataset:
+  megatts_datasets_70wh:
+    binary_data_root: 
+      default: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+      lq_hdfs: hdfs://haruna/home/byte_arnold_lq_speech_tts/user/renyi/data/binary_v3_sorted
+      va_hdfs: hdfs://harunava/home/byte_ad_applied_vision/user/liruiqi/data/binary_v3_sorted
+    train_sets: 
+    - sa_data_v1
+    weight: 1.0
+    processer_fn: tasks.tts.dataset_utils.swan_base_fastdataset.processer_fn_megatts3
+    reader_chunk_size: 64

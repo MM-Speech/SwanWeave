@@ -1,0 +1,49 @@
+base_config:
+  - ./config_base.yaml
+  - ./megatts_dataset.yaml
+
+task_cls: tasks.tts.megatts3_dit_v2.MegaTTSDiTV9Task
+
+# dataset
+dataset_cls: tasks.tts.dataset_utils.megatts_fastdataset.DiTWavTextShmDataset
+val_dataset_cls: tasks.tts.dataset_utils.tts_datasets.DiTWavTextDataset
+processer_fn: tasks.tts.dataset_utils.megatts_fastdataset.processer_fn_dit_wav_text
+build_fast_dataloader: tasks.tts.dataset_utils.megatts_fastdataset.build_fast_dataloader
+dataloader_mp_type: fork
+
+# dataloader
+prefetch_steps: 8
+eval_max_batches: 0
+ds_workers: 8
+max_tokens: 12000   # 24000 * 0.04 = 960 sec
+max_sentences: 500
+max_frames: 30000   # 5min
+min_frames: 50
+tgt_size_min: 50
+tgt_size_max: 4000
+frames_multiple: 8
+
+# model
+vae_ckpt: checkpoints/1231_megatts3_wavvae_v3_25hz_kl001_fix4
+latent_dim: 32
+vae_stride: 4
+
+# cfg
+lat_cfg_prob: 0.15
+txt_cfg_prob: 0.15
+caption_cfg_prob: 0.15
+ph_cfg_prob: 0.15
+
+# optimizer
+scheduler_lr_min: 4.0e-5
+disable_weight_decay_on_bias_and_norm_and_embed: True
+
+load_ckpt: ''
+use_fsdp: True
+gradient_checkpointing: false
+
+use_ema: True
+ema_decay: 0.9999
+ckpt_milestone_interval: 50000
+tb_log_interval: 1
+grad_norm_skip_threshold: 10

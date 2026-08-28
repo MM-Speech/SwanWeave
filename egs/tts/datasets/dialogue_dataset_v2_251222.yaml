@@ -1,0 +1,27 @@
+datasets:
+  zhiyuexingchen_multispk_datasets:
+    binary_data_root:
+      default: /mnt/bn/sa-ag-data/panchanghao/code/mega-data-pipeline/user/zhangyu/zhiyuexingchen_dialogue/meta_merged_ph_tone_encoded_final_hard
+      va_nas: /mnt/bn/genai-data2/liruiqi/data/speech/zhiyuexingchen_dialogue/meta_merged_wo_ph_tone_final_hard
+    train_sets:
+    - orig_zhiyuexingchen_zh_meta_0_17.jsonl
+    - orig_zhiyuexingchen_zh_meta_100_109.jsonl
+    - orig_zhiyuexingchen_zh_meta_110_119.jsonl
+    - orig_zhiyuexingchen_zh_meta_120_149.jsonl
+    - orig_zhiyuexingchen_zh_meta_150_166.jsonl
+    - orig_zhiyuexingchen_zh_meta_167_168.jsonl
+    - orig_zhiyuexingchen_zh_meta_18_19.jsonl
+    - orig_zhiyuexingchen_zh_meta_20_24.jsonl
+    - orig_zhiyuexingchen_zh_meta_25_29.jsonl
+    - orig_zhiyuexingchen_zh_meta_30_34.jsonl
+    - orig_zhiyuexingchen_zh_meta_35_39.jsonl
+    - orig_zhiyuexingchen_zh_meta_40_59.jsonl
+    - orig_zhiyuexingchen_zh_meta_60_69.jsonl
+    - orig_zhiyuexingchen_zh_meta_70_79.jsonl
+    - orig_zhiyuexingchen_zh_meta_80_99.jsonl
+    weight: 1.0
+    processer_fn: tasks.tts.dataset_utils.tts_fastdataset_v2.processer_fn_dialogue_emb
+    reader_chunk_size: 4
+    read_idx: True
+
+is_debug_run: False

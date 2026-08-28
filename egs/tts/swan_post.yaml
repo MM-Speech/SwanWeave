@@ -1,0 +1,48 @@
+base_config:
+- egs/tts/swan_base.yaml
+- egs/tts/datasets/swan_caption_dataset.yaml
+
+# task
+# task_cls: tasks.tts.avgen_dump.PromptAudioTask
+dataset_cls: tasks.tts.dataset_utils.swan_caption_fastdataset.SwanCaptionShmDataset
+val_dataset_cls: tasks.tts.dataset_utils.tts_datasets.DiTWavTextDataset
+dataloader_mp_type: fork
+use_audio_dataset: False
+
+# dataloader
+max_tokens: 10000
+
+# training
+drop_ref_wav: 0.7
+use_qwen: True # flan t5 xxl不支持中文
+trained_module: all
+
+pretrained_text_encoder_qwen: "Qwen/Qwen3-8B"
+text_max_token_length: 800
+caption_encoder_dim: 4096
+use_caption_pool_in_adaln: False
+use_caption: True
+
+use_caption_text_mark: True
+use_qk_norm: True
+use_dynamic_cross_gate: True
+
+use_global: True
+use_spk_mask: False
+use_gated_attention: False
+
+# engram
+use_engram: false
+engram_target: caption
+engram_orders: [1, 2, 3]
+engram_num_heads: 4
+engram_table_size: 262144   # 2^18
+engram_head_dim: 64
+engram_gate_bias: -4.0
+engram_conv_kernel: 3
+engram_dropout: 0.0
+engram_special_replace_id: 1
+
+skipped_items_jsonl:
+  enable: true
+  path: swanlog/skipped_items.jsonl

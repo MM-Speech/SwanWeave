@@ -1,0 +1,59 @@
+datasets:
+  # robust_mega3_text:
+  #   binary_data_root: 
+  #     default: /mnt/bn/sa-ag-data/liruiqi/data/speech/robust_mega3/texts_251211
+  #     lq_nas: /mnt/bn/sa-ag-data/liruiqi/data/speech/robust_mega3/texts_251211
+  #   train_sets: 
+  #   - en_hard/manifest_shard_000.json
+  #   - en_hard/manifest_shard_001.json
+  #   - en_hard/manifest_shard_002.json
+  #   - gcide/manifest_shard_000.json
+  #   - gcide/manifest_shard_001.json
+  #   - gcide/manifest_shard_002.json
+  #   - gcide/manifest_shard_003.json
+  #   - gcide/manifest_shard_004.json
+  #   - gcide/manifest_shard_005.json
+  #   # - mix_zh_en/manifest_shard_000.json
+  #   # - mix_zh_en/manifest_shard_001.json
+  #   # - mix_zh_en/manifest_shard_002.json
+  #   # - mix_zh_en/manifest_shard_003.json
+  #   # - mix_zh_en/manifest_shard_004.json
+  #   # - mix_zh_en/manifest_shard_005.json
+  #   # - mix_zh_en/manifest_shard_006.json
+  #   # - mix_zh_en/manifest_shard_007.json
+  #   # - mix_zh_en/manifest_shard_008.json
+  #   # - mix_zh_en/manifest_shard_009.json
+  #   # - mix_zh_en/manifest_shard_010.json
+  #   - zh_general_character/manifest_shard_000.json
+  #   - zh_general_character/manifest_shard_001.json
+  #   - zh_general_character/manifest_shard_002.json
+  #   - zh_general_character/manifest_shard_003.json
+  #   - zh_general_character/manifest_shard_004.json
+  #   - zh_hard/manifest_shard_000.json
+  #   - zh_hard/manifest_shard_001.json
+  #   - zh_hard/manifest_shard_002.json
+  #   weight: 1.0
+  #   processer_fn: tasks.tts.posttrain.posttrain_fastdataset_v2_simple.processer_fn_robust_mega3_text
+  #   reader_chunk_size: 64
+  badcase_text:
+    train_sets: 
+    - /mnt/bn/sa-ag-data/liruiqi/data/text/ad/badcase_251017_normed2.json
+    weight: 1.0
+    processer_fn: tasks.tts.posttrain.posttrain_fastdataset_v2_simple.processer_fn_robust_mega3_text
+    reader_chunk_size: 64
+
+load_wav: True
+dataloader_version: v2
+dataloader_use_weight: False
+
+is_debug_run: False
+debug_run_dataset:
+  robust_mega3:
+    binary_data_root: 
+      default: /mnt/bn/sa-ag-data/liruiqi/data/speech/robust_mega3/texts_251211
+      lq_nas: /mnt/bn/sa-ag-data/liruiqi/data/speech/robust_mega3/texts_251211
+    train_sets: 
+    - en_hard/manifest_shard_000.json
+    weight: 1.0
+    processer_fn: tasks.tts.posttrain.posttrain_fastdataset_v2_simple.processer_fn_robust_mega3_text
+    reader_chunk_size: 64

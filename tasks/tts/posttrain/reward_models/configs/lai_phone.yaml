@@ -1,0 +1,20 @@
+# basic
+work_dir: user/reward_cache
+
+# server
+n_devices: 7
+workers_per_device: 3
+daemon: True
+
+# polling
+poll_interval: 0.5  # seconds
+
+# reward
+reward:
+  lai: True
+  phone: True
+lai_model_path: /mnt/bn/sa-ag-data/panchanghao/code/ScriptSpeech/pretrained_models/LattifAI/Lattice-1
+
+# monitor
+stats_interval: 60  # seconds
+

@@ -1,0 +1,75 @@
+# Generic async filesystem-backed service config
+#
+# Queue layout (auto-created under work_dir):
+# - inputs/      : producers submit jobs
+# - processing/  : claimed jobs (server moves inputs -> processing)
+# - outputs/     : results written here
+# - failed/      : failed jobs + error JSON
+# - done/        : optional archive for processed inputs
+
+work_dir: user/service_cache/asr
+
+service:
+  pid_file: user/service_cache/asr/service.pid
+
+queue:
+  poll_interval_s: 0.1
+  max_in_flight: 8192
+
+  # Choose one:
+  # - json: good for metadata, paths
+  # - npy : good for big payloads (e.g. wav arrays)
+  job_codec: npy
+  result_codec: npy
+
+  input_ext: .npy
+  output_ext: .npy
+
+  keep_processed_inputs: false
+
+  # processing/ 下文件 mtime 超过这个阈值会被回收回 inputs/（at-least-once）
+  lease_timeout_s: 3600
+  recovery_interval_s: 5
+
+workers:
+  # GPU selection:
+  # - "auto": prefer CUDA_VISIBLE_DEVICES if set, otherwise detect GPU count
+  # - [0,1,2,3]: explicit GPU indices (see isolate_cuda_visible_devices note below)
+  # - 8: interpret as number of GPUs (0..7)
+  devices: auto
+
+  # Multiple workers can share the same GPU.
+  # Example: workers_per_device=4 means 4 worker processes per GPU.
+  workers_per_device: 1
+
+  # 每个 worker 每次最多拉取/处理多少个 job。
+  # - 1: 等价于原来的单任务 worker
+  # - 4: 每个 worker 会一次从队列里抓 4 个 job，然后批量处理并分别产出 4 份结果
+  # 注意：为了避免 server 一次性 claim 太多 inputs/，cli.py 会把全局 in_flight 软限制到 num_workers * max_jobs_per_worker。
+  max_jobs_per_worker: 8
+
+  # Optional CPU workers in addition to GPU workers.
+  # NOTE: There is no routing; CPU workers will also consume jobs from the same queue.
+  # Only enable this if your processor supports running those jobs on CPU.
+  cpu_workers: 0
+
+  # Whether to isolate each worker's CUDA_VISIBLE_DEVICES to a single GPU.
+  # - false (recommended): worker sees all visible GPUs; device passed to processor is "cuda:N".
+  # - true: worker only sees one GPU; device passed is typically "cuda:0" (stronger isolation).
+  isolate_cuda_visible_devices: false
+
+  start_method: spawn
+  daemon: true
+  task_queue_size: 8192
+
+processor:
+  module: data_gen.services.asr.processor
+  class: ASRDataServerProcessor
+  kwargs: 
+    max_batch_size: 128
+    max_total_duration_s: 4000
+    long_single_duration_s: 60
+    long_single_max_total_duration_scale: 0.5
+    attn_implementation: sdpa
+
+stats_interval_s: 30

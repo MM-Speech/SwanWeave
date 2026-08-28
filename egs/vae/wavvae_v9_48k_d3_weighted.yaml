@@ -1,0 +1,3 @@
+base_config:
+  - egs/vae/wavvae_v9_48k.yaml
+  - egs/tts/datasets/vae_dataset_v2_weighted_260115.yaml

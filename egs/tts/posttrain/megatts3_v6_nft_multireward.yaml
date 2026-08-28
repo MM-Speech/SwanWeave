@@ -1,0 +1,50 @@
+base_config:
+  - egs/tts/posttrain/megatts3_v6_nft.yaml
+
+task_cls: tasks.tts.megatts3_v6_nft_task.MegaTTSDiTPostTrainMultiRewardTask
+
+# num_batches = math.ceil(
+  #     num_batches_per_epoch * hparams['sample']['train_batch_size'] * 
+  #     hparams['sample']['num_generation_per_prompt'] / hparams['train']['batch_size']
+  # )
+
+sample:
+  num_batches_per_epoch: 3
+  num_generation_per_prompt: 4
+  train_batch_size: 2   # num of unique samples per gpu
+  num_steps: 40
+  guidance_scale: [1.4, 3.0]
+
+train:
+  batch_size: 12  # num_batches = num_batches_per_epoch * sample.train_batch_size * sample.num_generation_per_prompt / train.batch_size
+  gradient_accumulation_steps: 1
+  num_inner_epochs: 1
+  timestep_fraction: 1.0
+  beta: 0.0001
+  adv_clip_max: 5
+  adv_mode: all
+  pbar_log_interval: 4
+
+reward:
+  phone: True
+  mos: True
+  stoi: True
+  pesq: True
+  sim: True
+
+decay_type: 2
+nft_beta: 0.1
+per_prompt_stat_tracking: True
+dataloader_num_replica: 8   # multi gpu share data
+  
+amp: false
+val_check_interval: 100
+ckpt_milestone_interval: 2000
+
+optimizer:
+  betas:
+  - 0.9
+  - 0.999
+  fused: false
+  lr: 1.0e-5
+  weight_decay: 1.0e-4

@@ -1,0 +1,9 @@
+torch==2.0.1
+torchaudio==2.0.2
+numpy==1.26.0
+librosa
+PyYAML
+safetensors
+accelerate
+huggingface-hub
+einops

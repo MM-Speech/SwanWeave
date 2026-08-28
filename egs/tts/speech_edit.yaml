@@ -1,0 +1,70 @@
+base_config:
+- egs/tts/config_base.yaml
+# - egs/tts/datasets/tts_dataset_v2_251125.yaml
+# - egs/tts/datasets/swan_base_dataset.yaml
+- egs/tts/datasets/speech_edit_dataset.yaml
+
+# task
+# task_cls: tasks.tts.avgen_dump.PromptAudioTask
+task_cls: tasks.tts.speech_edit_task.PromptDiTTask
+
+# data
+frames_multiple: 4
+dataset_cls: tasks.tts.dataset_utils.speech_edit_fastdataset.SpeechEditTTSShmDataset
+val_dataset_cls: tasks.tts.dataset_utils.tts_datasets.DiTWavTextDataset
+use_audio_dataset: False
+# frames_multiple: 8
+# dataset_cls: tasks.tts.dataset_utils.tts_fastdataset_v2.BaseTTSShmDataset
+# val_dataset_cls: tasks.tts.dataset_utils.tts_datasets.DiTWavTextDataset
+# use_audio_dataset: False
+
+# dataloader
+eval_max_batches: 0
+ds_workers: 12 # 8 -> 12
+max_tokens: 12000
+max_sentences: 200
+max_frames: 6000   # 5min -> 1min
+min_frames: 100
+tgt_size_max: 4000  # 60 sec -> 40 sec
+tgt_size_min: 100   # 4 sec
+
+# model
+model_size: base
+latent_dim: 32
+vae_stride: 4
+vae_ckpt: checkpoints/251120_wavvae_v4_unfreeze 
+audio_tokenizer: glm4v
+
+load_ckpt: ''
+use_fsdp: false
+gradient_checkpointing: false
+
+# training
+scheduler_lr_min: 4.0e-5
+drop_st: True
+drop_xt: False # drop x_txt
+dit_version: 5 # 1:normal 2:crass_att 3:ph
+drop_ref_wav: 0.5
+add_vad_mask: False
+caption_encoder_dim: 5120
+
+use_caption: False
+use_caption_text_mark: False
+use_qk_norm: True
+use_dynamic_cross_gate: True
+
+use_cosyvoice2_text_tokenizer: True
+mix_text_pinyin:
+  enable: False
+  enable_prob: 0.4
+use_spk_mask: False
+crossattn_n_layers: 32
+use_gated_attention: False
+
+
+wav_add_noise: True
+wav_add_effect: True
+musan_dir: /mnt/bn/sa-ag-data/liruiqi/data/speech/musan
+musan_with_speech: False
+wav_add_noise_prob: 0.3
+wav_add_effect_prob: 0.3

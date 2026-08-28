@@ -1,0 +1,69 @@
+base_config:
+- egs/tts/config_base.yaml
+- egs/tts/datasets/swan_base_dataset.yaml
+
+# task
+task_cls: tasks.vc.swanvc_task.SwanVCDiTTask
+
+# audio
+fft_size: 2400
+hop_size: 480
+win_size: 2400
+audio_sample_rate: 48000
+f0_max: 600
+f0_min: 60
+fmax: 24000
+fmin: 0
+
+# data
+frames_multiple: 4
+dataset_cls: tasks.vc.dataset_utils.swanvc_fastdataset_v2.SwanVCShmDataset
+val_dataset_cls: tasks.tts.dataset_utils.tts_datasets.DiTWavTextDataset
+use_audio_dataset: False
+
+# dataloader
+eval_max_batches: 0
+ds_workers: 8
+max_tokens: 10000
+max_sentences: 200
+max_frames: 12000   # 5min
+min_frames: 100
+tgt_size_max: 6000
+tgt_size_min: 100
+fast_ds_prefetch_steps: 2
+
+# model
+model_size: base
+encoder_ffn_mult: 4.0
+
+latent_dim: 48
+vae_stride: 4
+vae_ckpt: checkpoints/260407_vae_v11_48k_25hz_z48/model_ckpt_steps_600000_model_gen.ckpt
+latent_norm_mode: per_channel
+vae_encode_chunk_sec: 240
+vae_encode_max_batch_size: 128
+vae_deterministic: True
+
+load_ckpt: ''
+use_fsdp: true
+sharding_strategy: hybrid
+gradient_checkpointing: false
+
+use_ema: True
+ema_decay: 0.9999
+
+# training
+optimizer:
+  betas:
+  - 0.9
+  - 0.999
+  fused: false
+  lr: 1.0e-4
+  weight_decay: 0.01
+scheduler_lr_min: 5.0e-5
+ckpt_milestone_interval: 50000
+tb_log_interval: 1
+grad_norm_skip_warmup_steps: 10000
+grad_norm_skip_threshold: 10
+grad_norm_skip_warmup_log_enabled: False
+grad_norm_skip_init_threshold: 1000000

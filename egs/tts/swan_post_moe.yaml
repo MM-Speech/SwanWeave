@@ -1,0 +1,31 @@
+base_config:
+- egs/tts/swan_post.yaml
+
+use_global: True
+use_spk_mask: False
+
+# moe
+use_moe_ffn: True
+moe_p: 0.7
+moe_num_routed: 4
+moe_num_shared: 2
+moe_num_null: 1
+moe_expert_dropout: 0.05
+moe_use_gumbel: False
+# moe_gumbel_tau_start: 1.0
+# moe_gumbel_tau_end: 0.7
+# moe_gumbel_tau_anneal_steps: 100000
+moe_aux_loss_weight: 1.0
+moe_aux_anneal_steps: 200000
+moe_load_balance_loss_coef: 1e-2
+moe_router_z_loss_coef: 1e-3
+moe_capacity_factor_min: 1.3
+moe_capacity_factor_max: 2.5
+moe_overflow_drop: True
+moe_use_t_budget: True
+moe_p_min: 0.55
+moe_p_max: 0.90
+moe_null_logit_bias_min: -2.5
+moe_null_logit_bias_max: -0.2
+decoder_sparse_step: 1   # 1=每层都用MoE；2=每2层一层MoE；4=每4层一层MoE
+mlp_only_layers: []      # 或者 [0, 1, 2] 这种形式指定只用全连接层的层数
