@@ -222,6 +222,4 @@ modules/codec
 modules/vae
 modules/vc
 modules/vocoder
-tasks/asr
-tasks/vae
-tasks/vc
+tasks
