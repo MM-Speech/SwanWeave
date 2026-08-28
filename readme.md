@@ -25,6 +25,8 @@ pip install numpy==1.23.5
 
 Before running inference, download the required pretrained models.
 
+Download model checkpoint: `hf download BrokenMoon/SwanWeave dit/ --local-dir checkpoints`
+
 ### Stable Audio VAE
 
 Download the VAE checkpoint from: [stabilityai/stable-audio-open-1.0](https://huggingface.co/stabilityai/stable-audio-open-1.0/tree/main/vae)
