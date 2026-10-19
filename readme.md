@@ -25,7 +25,7 @@ pip install numpy==1.23.5
 
 Before running inference, download the required pretrained models.
 
-Download model checkpoint: `hf download BrokenMoon/SwanWeave dit/ --local-dir checkpoints`
+Download model checkpoint: `hf download BrokenMoon/SwanWeave dit/ moe/ --local-dir checkpoints`
 
 ### Stable Audio VAE
 
@@ -39,11 +39,12 @@ Download the Qwen3-0.6B checkpoint from: [Qwen/Qwen3-0.6B](https://huggingface.c
 
 Place the downloaded files under: `checkpoints/Qwen3-0.6B/`
 
-The checkpoint directory should be organized approximately as follows:
+The checkpoint directory should be organized as follows:
 
 ```text
 checkpoints/
 ├── dit/
+├── moe/
 ├── vae/
 └── Qwen3-0.6B/
 ```

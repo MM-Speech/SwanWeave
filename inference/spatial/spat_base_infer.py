@@ -128,7 +128,7 @@ class SpatBaseInfer(DiTBuildModelMixin):
         self._build_model(attn_implementation=attn_implementation)
 
         model_name = "ema_model" if self.use_ema and hparams.get("use_ema", False) else "dit"
-        load_ckpt(self.dit, dit_ckpt, model_name, strict=False)
+        load_ckpt(self.dit, dit_ckpt, model_name, strict=True)
 
         self.vae.eval().to(self.device)
         self.vae_dtype = next(self.vae.parameters()).dtype
