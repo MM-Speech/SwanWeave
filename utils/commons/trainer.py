@@ -241,6 +241,8 @@ class Trainer:
                 setproctitle.setproctitle(f'MegaAvatar_worker ({hparams["work_dir"]})')
                 self.run_single_process(self.task)
         except:
+            if not hparams.get('pkill_at_end', True):
+                raise
             traceback.print_exc()
             time.sleep(5)
             if self.proc_rank == 0:
@@ -584,6 +586,11 @@ class Trainer:
 
         # run all epochs
         while True:
+            if self.global_step >= self.max_updates:
+                task_ref.global_step = self.global_step
+                self.run_evaluation()
+                print("| Training end..")
+                break
             # set seed for distributed sampler (enables shuffling for each epoch)
             if self.use_ddp and hasattr(dataloader.sampler, 'set_epoch'):
                 dataloader.sampler.set_epoch(epoch)
@@ -623,12 +630,12 @@ class Trainer:
                     self.log_metrics_to_tb(tb_metrics_avg)
                     tb_metrics_avg = {}
 
-                if self.global_step > self.max_updates + 1:
+                self.global_step += 1
+                task_ref.global_step = self.global_step
+                if self.global_step >= self.max_updates:
                     self.run_evaluation()
                     print("| Training end..")
                     break
-
-                self.global_step += 1
 
                 # Do garbage collection.
                 # FIXME: extremely slow
@@ -636,13 +643,11 @@ class Trainer:
                     if self.global_step % hparams.get('gc_every_n_steps', -1) == 0:
                         gc.collect()
 
-                task_ref.global_step = self.global_step
-
             # epoch end hook
             epoch_loss_dict = task_ref.on_epoch_end()
             self.log_metrics_to_tb(epoch_loss_dict)
             epoch += 1
-            if self.global_step > self.max_updates + 1:
+            if self.global_step >= self.max_updates:
                 break
         # End the profiler.
         if self.profiler:
@@ -1010,17 +1015,19 @@ class Trainer:
             ckpt_config_path = f"{hparams['work_dir']}/config.yaml"
             with open(ckpt_config_path, 'w') as f:
                 yaml.safe_dump(hparams, f)
-            save_thread = threading.Thread(
-                target=save_checkpoint, args=[checkpoint['state_dict'], filepath, False])
-            save_thread.start()
-            save_thread = threading.Thread(
-                target=save_checkpoint, args=[checkpoint['optimizer_states'], filepath[:-5] + '_optm.ckpt', False])
-            save_thread.start()
-            if len(checkpoint['state_dict'].keys()) > 1:
-                for m, v in checkpoint['state_dict'].items():
-                    save_thread = threading.Thread(
-                        target=save_checkpoint, args=[{m: v}, filepath[:-5] + f'_{m}.ckpt', False])
-                    save_thread.start()
+            from concurrent.futures import ThreadPoolExecutor
+
+            # Finish every write before pruning old checkpoints or reporting success.
+            with ThreadPoolExecutor() as executor:
+                futures = [
+                    executor.submit(save_checkpoint, checkpoint['state_dict'], filepath, False),
+                    executor.submit(save_checkpoint, checkpoint['optimizer_states'], filepath[:-5] + '_optm.ckpt', False),
+                ]
+                if len(checkpoint['state_dict'].keys()) > 1:
+                    for m, v in checkpoint['state_dict'].items():
+                        futures.append(executor.submit(save_checkpoint, {m: v}, filepath[:-5] + f'_{m}.ckpt', False))
+                for future in futures:
+                    future.result()
 
     def dump_optm_fsdp(self):
         # # 在获取 OSD 前确保所有 FSDP 模块已初始化
@@ -1219,9 +1226,6 @@ class Trainer:
         cmd_path = f'{self.work_dir}/run_cmd/{t}.log'
         os.makedirs(f'{self.work_dir}/run_cmd', exist_ok=True)
         with open(cmd_path, 'w') as f:
-            for k in os.environ:
-                f.write(f"{k}={os.environ[k]}\n")
-            f.write('\n')
             f.write(' '.join(['python'] + sys.argv) + '\n')
         config_path = f'{self.work_dir}/run_configs/{t}.yaml'
         os.makedirs(f'{self.work_dir}/run_configs', exist_ok=True)

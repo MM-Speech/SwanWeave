@@ -83,9 +83,6 @@ class BaseTask(nn.Module):
     ######################
     def on_train_start(self):
         if self.trainer.proc_rank_local == 0:
-            devices = os.environ.get('CUDA_VISIBLE_DEVICES', '').split(",")
-            for d in devices:
-                os.system(f'pkill -f "voidgpu{d}"')
             for n in self.trainer.training_module_names:
                 if 'ema' in [n_.lower() for n_ in n.split('_')]:
                     continue

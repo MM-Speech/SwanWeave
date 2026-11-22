@@ -252,7 +252,7 @@ class CosineAnnealingWarmRestartsWithWarmup:
             return self.lr_min + (self.lr_max - self.lr_min) * ratio
         
         # 检查是否进入新周期
-        if num_updates >= self.cycle_end and num_updates < self.total_updates:
+        while num_updates >= self.cycle_end and num_updates < self.total_updates:
             # 启动新周期
             self.cycle_count += 1
             self.cycle_start = self.cycle_end
@@ -280,4 +280,3 @@ class CosineAnnealingWarmRestartsWithWarmup:
         lr = self._calculate_lr(num_updates)
         self.assign_learning_rate(self.optimizer, lr)
         return lr
-    

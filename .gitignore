@@ -215,14 +215,21 @@ flash_attn-2.7.0.post1+cu12torch2.3cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
 
 logs/
 install.sh
-egs/
+/egs/*
+!/egs/config_base.yaml
+!/egs/spat_audio_edit.yaml
+!/egs/egs_bases/
+/egs/egs_bases/*
+!/egs/egs_bases/config_base.yaml
 inference/tts
 modules/asr
 modules/codec
 modules/vae
 modules/vc
 modules/vocoder
-tasks
+/tasks/*
+!/tasks/run.py
+!/tasks/spat_audio_edit_task.py
 modules/tts/ar_dur
 modules/tts/codeclm
 modules/tts/ditar
@@ -231,3 +238,12 @@ modules/tts/image_encoder
 modules/tts/semantic_encoders
 modules/tts/swanaudio
 modules/tts/wavvae
+
+# Spatial training data code and its configuration.
+!/tasks/dataset_utils/
+/tasks/dataset_utils/*
+!/tasks/dataset_utils/base_dataset.py
+!/tasks/dataset_utils/spat_base_fastdataset.py
+!/egs/datasets/
+/egs/datasets/*
+!/egs/datasets/spat_edit_dataset.yaml
