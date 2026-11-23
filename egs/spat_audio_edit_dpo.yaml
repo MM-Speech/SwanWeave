@@ -1,0 +1,46 @@
+base_config:
+- egs/spat_audio_edit.yaml
+- egs/datasets/spat_edit_dpo_dataset.yaml
+
+task_cls: tasks.spat_audio_edit_dpo_task.SpatAudioEditDpoTask
+
+# auto reads the architecture from config.yaml beside load_ckpt.
+# dense/moe explicitly validates that the checkpoint has the requested type.
+dpo_model_type: auto
+load_ckpt: checkpoints/dit
+train_base: false
+use_moe_ffn: false
+init_edit_lat_proj_from_t2a: false
+use_ema: false
+preserve_module_dtypes: [ref]
+
+# Keep full edit conditions for each preference comparison.
+drop_caption: 0.0
+drop_source_lat: 0.0
+parallel_foa_vae_encode: true
+
+dpo_beta: 50.0
+dpo_beta_warmup_steps: 2000
+dpo_share_noise: true
+dpo_loss_weight: 1.0
+dpo_diff_loss_weight: 1.0
+
+# Preserve learned MoE routing biases; do not update them during DPO.
+moe_bias_update_rate: 0.0
+moe_expert_dropout: 0.0
+moe_use_gumbel: false
+moe_aux_loss_weight: 0.2
+moe_aux_anneal_steps: 0
+moe_load_balance_loss_coef: 0.0
+
+optimizer:
+  lr: 2.0e-5
+scheduler_lr_min: 2.0e-6
+warmup_updates: 200
+max_updates: 10000
+max_sentences: 1
+max_tokens: 2000
+ds_workers: 2
+val_check_interval: 1000
+eval_max_batches: 1
+num_sanity_val_steps: 1

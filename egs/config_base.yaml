@@ -1,5 +1,5 @@
 base_config:
-- ./egs_bases/config_base.yaml
+- egs/egs_bases/config_base.yaml
 
 # audio
 acous_params:

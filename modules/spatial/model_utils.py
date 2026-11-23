@@ -73,7 +73,7 @@ def build_vae(vae_ckpt):
         hp_vae = set_hparams(os.path.join(Path(vae_ckpt).parent, 'config.yaml'), global_hparams=False)
     else:
         hp_vae = set_hparams(os.path.join(vae_ckpt, 'config.yaml'), global_hparams=False)
-    from modules.tts.wavvae.decoder.wavvae_v3 import WavVAE_V3
+    from modules.spatial.wavvae_decoder_wavvae_v3 import WavVAE_V3
     vae = WavVAE_V3(hparams=hp_vae)
     load_ckpt(vae, vae_ckpt, 'model_gen', strict=True)
     vae.eval()
@@ -81,8 +81,8 @@ def build_vae(vae_ckpt):
 
 def build_audio_tokenizer(audio_tokenizer_type):
     if audio_tokenizer_type == 'glm4v':
-        from modules.tts.semantic_encoders.glm4_tokenizer.feature_extraction_whisper import WhisperFeatureExtractorV2
-        from modules.tts.semantic_encoders.glm4_tokenizer.modeling_whisper import WhisperVQEncoder
+        from modules.spatial.semantic_encoders_glm4_tokenizer_feature_extraction_whisper import WhisperFeatureExtractorV2
+        from modules.spatial.semantic_encoders_glm4_tokenizer_modeling_whisper import WhisperVQEncoder
         audio_token_feature_extractor = WhisperFeatureExtractorV2.from_pretrained(hparams.get('glm_path', "checkpoints/glm-4-voice-tokenizer"))
         audio_tokenizer = WhisperVQEncoder.from_pretrained(hparams.get('glm_path', "checkpoints/glm-4-voice-tokenizer")).eval()
         for param in audio_tokenizer.parameters():
@@ -144,15 +144,15 @@ class DiTBuildModelMixin:
 
     def build_dit(self, hparams):
         if hparams.get('dit_version', 1) == 1:
-            from modules.tts.scriptspeech.dit import Diffusion, ModelArgs
+            from modules.spatial.scriptspeech_dit import Diffusion, ModelArgs
         elif hparams.get('dit_version', 1) == 2:
-            from modules.tts.scriptspeech.dit_na import Diffusion, ModelArgs
+            from modules.spatial.scriptspeech_dit_na import Diffusion, ModelArgs
         elif hparams.get('dit_version', 1) == 3:
-            from modules.tts.scriptspeech.dit_na_ph import Diffusion, ModelArgs
+            from modules.spatial.scriptspeech_dit_na_ph import Diffusion, ModelArgs
         elif hparams.get('dit_version', 1) == 4:
-            from modules.tts.scriptspeech.dit_na_ph_unify import Diffusion, ModelArgs
+            from modules.spatial.scriptspeech_dit_na_ph_unify import Diffusion, ModelArgs
         elif hparams.get('dit_version', 1) == 5:
-            from modules.tts.scriptspeech.dit_prompt import Diffusion, ModelArgs, PostTrainNFTWrapper
+            from modules.spatial.scriptspeech_dit_prompt import Diffusion, ModelArgs, PostTrainNFTWrapper
         else:
             raise NotImplementedError
         print(f'| Building DIT model version {hparams.get("dit_version", 1)}')
@@ -394,23 +394,23 @@ class DiTBuildModelMixinV2:
 
     def build_dit(self, hparams):
         if hparams.get('dit_version', 'v2') == '2spk':
-            from modules.tts.scriptspeech.dit_ph_multi import ModelArgs
+            from modules.spatial.scriptspeech_dit_ph_multi import ModelArgs
         elif hparams.get('dit_version', 'v2') == '2spk_emb':
-            from modules.tts.scriptspeech.dit_ph_multi_emb import ModelArgs
+            from modules.spatial.scriptspeech_dit_ph_multi_emb import ModelArgs
         elif hparams.get('dit_version', 'v2') == 'audio':
-            from modules.tts.scriptspeech.dit_audio import ModelArgs
+            from modules.spatial.scriptspeech_dit_audio import ModelArgs
         elif hparams.get('dit_version', 'v2') == 'avgen':
-            from modules.tts.scriptspeech.dit_v2 import ModelArgs
+            from modules.spatial.scriptspeech_dit_v2 import ModelArgs
         # elif hparams.get('dit_version', 'base') == 3:
-        #     from modules.tts.scriptspeech.dit_ph_audio_old import ModelArgs
+        #     from modules.spatial.scriptspeech_dit_ph_audio_old import ModelArgs
         # elif hparams.get('dit_version', 'base') == 3.1:
-        #     from modules.tts.scriptspeech.dit_ph_audio_qf import ModelArgs
+        #     from modules.spatial.scriptspeech_dit_ph_audio_qf import ModelArgs
         elif hparams.get('dit_version', 'base') == 'v3':
-            from modules.tts.scriptspeech.dit_ph_v3 import ModelArgs
+            from modules.spatial.scriptspeech_dit_ph_v3 import ModelArgs
             print_once(f'| Use DiT version v3')
             config = ModelArgs()
         else:
-            from modules.tts.scriptspeech.dit_ph import ModelArgs
+            from modules.spatial.scriptspeech_dit_ph import ModelArgs
         config = ModelArgs()
         config.do_checkpoint = hparams.get('do_checkpoint', False)
 
@@ -460,23 +460,23 @@ class DiTBuildModelMixinV2:
         config.sparse_ph_idx = 302 - 2
         config.sparse_tone_idx = 32 - 2
         if hparams.get('dit_version', 'v2') == '2spk':
-            from modules.tts.scriptspeech.dit_ph_multi import Diffusion
+            from modules.spatial.scriptspeech_dit_ph_multi import Diffusion
         elif hparams.get('dit_version', 'v2') == '2spk_emb':
-            from modules.tts.scriptspeech.dit_ph_multi_emb import Diffusion
+            from modules.spatial.scriptspeech_dit_ph_multi_emb import Diffusion
         # elif hparams.get('dit_version', 'base') == 3:
-        #     from modules.tts.scriptspeech.dit_ph_audio_old import Diffusion
+        #     from modules.spatial.scriptspeech_dit_ph_audio_old import Diffusion
         #     self.dit = Diffusion(config)
         # elif hparams.get('dit_version', 'base') == 3.1:
-        #     from modules.tts.scriptspeech.dit_ph_audio_qf import Diffusion
+        #     from modules.spatial.scriptspeech_dit_ph_audio_qf import Diffusion
         #     self.dit = Diffusion(config)
         elif hparams.get('dit_version', 'v2') == 'audio':
-            from modules.tts.scriptspeech.dit_prompt import Diffusion
+            from modules.spatial.scriptspeech_dit_prompt import Diffusion
         elif hparams.get('dit_version', 'v2') == 'v3':
-            from modules.tts.scriptspeech.dit_ph_v3 import Diffusion
+            from modules.spatial.scriptspeech_dit_ph_v3 import Diffusion
         elif hparams.get('dit_version', 'v2') == 'avgen':
-            from modules.tts.scriptspeech.dit_v2 import Diffusion
+            from modules.spatial.scriptspeech_dit_v2 import Diffusion
         else:
-            from modules.tts.scriptspeech.dit_ph import Diffusion
+            from modules.spatial.scriptspeech_dit_ph import Diffusion
         self.dit = Diffusion(config)
         self.dit.text_tokenizer = self.dit_text_tokenizer
         self.vae_stride = hparams.get('vae_stride', 8)
@@ -502,7 +502,7 @@ class DiTBuildModelMixinV2:
     
 class DiTBuildModelMixinV4(DiTBuildModelMixinV2):
     def build_dit(self, hparams):
-        from modules.tts.scriptspeech.dit_ph_v4 import Diffusion, ModelArgs
+        from modules.spatial.scriptspeech_dit_ph_v4 import Diffusion, ModelArgs
         print_once(f'| Use DiT version v4')
         config = ModelArgs()
         if hparams.get('model_size', 'base') == 'small':
@@ -580,7 +580,7 @@ class DiTBuildModelMixinV5(DiTBuildModelMixinV4):
         self.audio_encoder, _, _, _ = build_wavlm()
 
     def build_dit(self, hparams):
-        from modules.tts.scriptspeech.dit_ph_v5 import Diffusion, ModelArgs
+        from modules.spatial.scriptspeech_dit_ph_v5 import Diffusion, ModelArgs
         print_once(f'| Use DiT version v5')
         config = ModelArgs()
         if hparams.get('model_size', 'base') == 'small':
@@ -641,7 +641,7 @@ class DiTBuildModelMixinV6(DiTBuildModelMixinV2):
                 self.caption_encoder = shard_model_in_node(self.caption_encoder, transformer_cls, int(os.environ.get("LOCAL_RANK", 0)))
 
     def build_dit(self, hparams):
-        from modules.tts.scriptspeech.dit_ph_v6 import ModelArgs, Diffusion
+        from modules.spatial.scriptspeech_dit_ph_v6 import ModelArgs, Diffusion
         
         config = ModelArgs()
         config.do_checkpoint = hparams.get('do_checkpoint', False)
@@ -681,7 +681,7 @@ class DiTBuildModelMixinV6(DiTBuildModelMixinV2):
         return self.dit
 
     def build_duration_predictor(self, hparams, init_pretrained=False):
-        from modules.tts.scriptspeech.dit_ph_v6 import ModelArgs, TotalDurationPredictor
+        from modules.spatial.scriptspeech_dit_ph_v6 import ModelArgs, TotalDurationPredictor
         config = ModelArgs()
         config.vocab_size = self.dit_vocab_size
         config.do_checkpoint = hparams.get('gradient_checkpointing', False)
@@ -699,7 +699,7 @@ class DiTBuildModelMixinV7(DiTBuildModelMixinV6):
         return text_tokenizer, vocab_size
 
     def build_dit(self, hparams):
-        from modules.tts.scriptspeech.dit_ph_v7 import ModelArgs, Diffusion
+        from modules.spatial.scriptspeech_dit_ph_v7 import ModelArgs, Diffusion
         
         config = ModelArgs()
         config.do_checkpoint = hparams.get('do_checkpoint', False)
@@ -741,7 +741,7 @@ class DiTBuildModelMixinV7(DiTBuildModelMixinV6):
 
 class DiTBuildModelMixinV8(DiTBuildModelMixinV7):
     def build_dit(self, hparams):
-        from modules.tts.scriptspeech.dit_ph_v8 import ModelArgs, Diffusion
+        from modules.spatial.scriptspeech_dit_ph_v8 import ModelArgs, Diffusion
         config = ModelArgs()
         config.do_checkpoint = hparams.get('do_checkpoint', False)
         if hparams.get('model_size', 'base') == 'small':
@@ -779,7 +779,7 @@ class DiTBuildModelMixinV8(DiTBuildModelMixinV7):
         return self.dit
 
     def build_duration_predictor(self, hparams, init_pretrained=False):
-        from modules.tts.scriptspeech.dit_ph_v8 import ModelArgs, TotalDurationPredictor
+        from modules.spatial.scriptspeech_dit_ph_v8 import ModelArgs, TotalDurationPredictor
         config = ModelArgs()
         config.vocab_size = self.dit_vocab_size
         config.do_checkpoint = hparams.get('gradient_checkpointing', False)
@@ -800,7 +800,7 @@ class DiTBuildModelMixinV9:
         self.build_dit(hparams)
         
     def build_dit(self, hparams):
-        from modules.tts.scriptspeech.dit_ph_v9 import ModelArgs, Diffusion
+        from modules.spatial.scriptspeech_dit_ph_v9 import ModelArgs, Diffusion
         
         config = ModelArgs()
         config.do_checkpoint = hparams.get('do_checkpoint', False)

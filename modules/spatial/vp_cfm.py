@@ -1,7 +1,7 @@
 import math
 import torch
 from typing import Union
-from modules.tts.llama_dit.time_embedding import LogitNormalTrainingTimesteps
+from modules.spatial.time_embedding import LogitNormalTrainingTimesteps
 
 
 def pad_t_like_x(t, x):

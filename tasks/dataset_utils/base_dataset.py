@@ -57,6 +57,15 @@ class BaseDataset(IterableDataset):
             test_num = int(hparams.get("test_num", 100))
             if test_num > 0:
                 self.sample_limit = min(self.sample_limit, test_num) if self.sample_limit > 0 else test_num
+        if self.sample_limit > 0:
+            if self.sample_limit < self.world_size:
+                raise ValueError(
+                    "Finite sample limit %d is smaller than world_size=%d; "
+                    "increase test_num/stream_max_samples to give every rank a sample." %
+                    (self.sample_limit, self.world_size)
+                )
+            # Equal rank budgets keep distributed validation collectives aligned.
+            self.sample_limit = self.sample_limit // self.world_size * self.world_size
         self.groups = []
         for name, spec in hparams.get("datasets", {}).items():
             if name.startswith("__") or not isinstance(spec, dict):
@@ -152,7 +161,8 @@ class BaseDataset(IterableDataset):
         self.iteration += 1
         quota = None
         if self.sample_limit > 0:
-            quota = max(0, (self.sample_limit - shard + shards - 1) // shards)
+            rank_limit = self.sample_limit // self.world_size
+            quota = max(0, (rank_limit - worker_id + workers - 1) // workers)
             if quota == 0:
                 return
         states = [dict(group=group, iterator=self._group_chunks(group, shard, shards, rng),

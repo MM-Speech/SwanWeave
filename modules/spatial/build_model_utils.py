@@ -9,7 +9,7 @@ from copy import deepcopy
 import torch
 from utils.commons.hparams import hparams
 from utils.commons.io import print_once
-from modules.tts.scriptspeech.build_model_utils import (
+from modules.spatial.model_utils import (
     build_qwen3,
     shard_model_in_node,
     get_class_from_module,
@@ -151,7 +151,7 @@ class DiTBuildModelMixin:
         )
 
     def build_dit(self, hparams, attn_implementation='sdpa'):
-        from modules.tts.spat_edit.dit import Diffusion, ModelArgs
+        from modules.spatial.dit import Diffusion, ModelArgs
         config = ModelArgs()
         if hparams.get('model_size', 'base') == 'small':
             print('| use small model')
@@ -287,7 +287,7 @@ class DiTBuildModelMixin:
         dtype = torch.bfloat16
         qwen_name = hparams.get(
             'pretrained_text_encoder_qwen',
-            '/mnt/bn/sa-ag-data/leike/spatial_edit/ScriptSpeech/checkpoints/Qwen3-0.6B',
+            './checkpoints/Qwen3-0.6B',
         )
         if 'qwen2' in qwen_name.lower():
             from transformers import Qwen2Model

@@ -230,14 +230,6 @@ modules/vocoder
 /tasks/*
 !/tasks/run.py
 !/tasks/spat_audio_edit_task.py
-modules/tts/ar_dur
-modules/tts/codeclm
-modules/tts/ditar
-modules/tts/frontend_lm
-modules/tts/image_encoder
-modules/tts/semantic_encoders
-modules/tts/swanaudio
-modules/tts/wavvae
 
 # Spatial training data code and its configuration.
 !/tasks/dataset_utils/
@@ -247,3 +239,9 @@ modules/tts/wavvae
 !/egs/datasets/
 /egs/datasets/*
 !/egs/datasets/spat_edit_dataset.yaml
+
+# Preference training.
+!/tasks/spat_audio_edit_dpo_task.py
+!/tasks/dataset_utils/spat_dpo_dataset.py
+!/egs/spat_audio_edit_dpo.yaml
+!/egs/datasets/spat_edit_dpo_dataset.yaml

@@ -1004,7 +1004,9 @@ class Trainer:
             if self.proc_rank == 0:
                 state_dict[n] = {
                     k.replace('module.', '') if k.startswith('module.') else k:
-                        move_to_cpu(copy.deepcopy(v.to(dtype_save))) for k, v in state_dict_.items()
+                        move_to_cpu(copy.deepcopy(
+                            v if n in hparams.get('preserve_module_dtypes', []) else v.to(dtype_save)
+                        )) for k, v in state_dict_.items()
                 }
         checkpoint['state_dict'] = state_dict
         if self.use_fsdp:
@@ -1148,7 +1150,7 @@ class Trainer:
             os.environ['MASTER_ADDR'] = root_node
         else:
             os.environ['MASTER_ADDR'] = hparams['master_addr']
-        os.environ['MASTER_PORT'] = str(hparams.get('master_port','6668'))
+        os.environ['MASTER_PORT'] = str(hparams.get('master_port', os.environ.get('MASTER_PORT', '6668')))
         print("| use master addr: ", os.environ['MASTER_ADDR']," use master port: ", os.environ['MASTER_PORT'])
         dist.init_process_group(
             'nccl', timeout=datetime.timedelta(seconds=7200000),  # was 1800000

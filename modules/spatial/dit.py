@@ -15,7 +15,7 @@ from utils.nn.seq_utils import sequence_mask
 
 logger = logging.getLogger(__name__)
 
-ForwardTask = Literal["training", "encode_cond", "denoise_step"]
+ForwardTask = Literal["training", "dpo_pair", "encode_cond", "denoise_step"]
 
 
 @dataclass
@@ -133,7 +133,7 @@ class Diffusion(nn.Module):
         )
 
         if hp.moe_use_ec:
-            from modules.tts.swanaudio.swan_dit_ecmoe import TransformerEcMoeDiTModel
+            from modules.spatial.swanaudio_swan_dit_ecmoe import TransformerEcMoeDiTModel
             config_dict.update(dict(
                 use_moe_ffn=hp.use_moe_ffn,
                 decoder_sparse_step=hp.decoder_sparse_step,
@@ -150,7 +150,7 @@ class Diffusion(nn.Module):
             ))
             self.encoder = TransformerEcMoeDiTModel(TransformerDiTConfig(**config_dict))
         else:
-            from modules.tts.spat_edit.spat_dit_moe import TransformerMoeDiTModel
+            from modules.spatial.spat_dit_moe import TransformerMoeDiTModel
             config_dict.update(dict(
                 use_moe_ffn=hp.use_moe_ffn,
                 decoder_sparse_step=hp.decoder_sparse_step,
@@ -203,11 +203,11 @@ class Diffusion(nn.Module):
         if hp.use_caption_text_mark:
             self.caption_text_mark_embed = nn.Embedding(4, self.hp.encoder_dim)
 
-        from modules.tts.llama_dit.vp_cfm import ConditionalFlowMatcher
+        from modules.spatial.vp_cfm import ConditionalFlowMatcher
 
         self.flow_matcher = ConditionalFlowMatcher(sigma=0.0)
 
-        from modules.tts.f5_dit.f5_modules import TimestepEmbedding
+        from modules.spatial.f5_modules import TimestepEmbedding
 
         self.f5_time_embed = TimestepEmbedding(hp.encoder_dim)
 
@@ -615,6 +615,24 @@ class Diffusion(nn.Module):
         prev = self._in_forward
         self._in_forward = True
         try:
+            if task == "dpo_pair":
+                if inputs is None:
+                    raise ValueError("forward(task='dpo_pair') requires positive/negative inputs")
+                # DDP must discover experts from both branches in one forward.
+                # Keep separate branches so capacity routing remains unchanged.
+                rng_state = inputs.get("rng_state")
+                outputs = []
+                for branch in ("positive", "negative"):
+                    branch_inputs = inputs[branch]
+                    if rng_state is not None:
+                        # DDP may move RNG state tensors; generators require CPU states.
+                        torch.random.set_rng_state(rng_state["cpu"].cpu())
+                        device = branch_inputs["lat"].device
+                        if device.type == "cuda" and "cuda" in rng_state:
+                            torch.cuda.set_rng_state(rng_state["cuda"].cpu(), device)
+                    outputs.append(self.forward(branch_inputs, task="training"))
+                return tuple(outputs)
+
             if task == "encode_cond":
                 if inputs is None:
                     raise ValueError("forward(task='encode_cond') requires inputs")

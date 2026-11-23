@@ -12,7 +12,7 @@ import torch.nn.functional as F
 for type_name in collections.abc.__all__:
     setattr(collections, type_name, getattr(collections.abc, type_name))
 
-from modules.tts.spat_edit.build_model_utils import DiTBuildModelMixin
+from modules.spatial.build_model_utils import DiTBuildModelMixin
 from utils.commons.ckpt_utils import load_ckpt
 from utils.commons.hparams import hparams, set_hparams
 

@@ -70,3 +70,29 @@ python inference/spatial/spat_edit_infer.py \
     --caption "Make the Screaming swing around from behind on the right to directly in front." \
     --out_path output/angle_motion.wav
 ```
+
+## Training
+
+SwanWeave can be trained on simulated edit pairs.
+
+### Training Instructions
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python tasks/run.py \
+    --config egs/spat_audio_edit.yaml \
+    --exp_name swanweave_train \
+    --hparams "max_sentences=8,max_tokens=2000,ds_workers=2"
+```
+
+### Preference training (DPO)
+
+DPO starts a new experiment from a trained editor. The policy and a frozen
+reference start with the same weights; only the policy is optimized. The loss
+combines a preference objective with the positive target's flow-matching loss.
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python tasks/run.py \
+    --config egs/spat_audio_edit_dpo.yaml \
+    --exp_name swanweave_dpo_dense \
+    --hparams "load_ckpt=checkpoints/swanweave_train,max_sentences=8,max_tokens=2000,ds_workers=2"
+```

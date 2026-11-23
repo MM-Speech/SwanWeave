@@ -20,7 +20,7 @@ from utils.commons.io import print_once
 from utils.nn.model_utils import unwrap_model
 from utils.nn.seq_utils import sequence_mask
 
-from modules.tts.spat_edit.build_model_utils import DiTBuildModelMixin
+from modules.spatial.build_model_utils import DiTBuildModelMixin
 
 
 def build_stereo_from_foa(wavs: torch.Tensor, channel_pair: Tuple[int, int]) -> torch.Tensor:
@@ -293,7 +293,7 @@ class SpatAudioEditBaseTask(BaseTask):
         return self
 
     def fsdp_wrap_policy(self):
-        import modules.tts.spat_edit.spat_dit_moe
+        import modules.spatial.spat_dit_moe
 
         qwen_layer = get_class_from_module(
             "transformers.models.qwen3.modeling_qwen3",
@@ -302,7 +302,7 @@ class SpatAudioEditBaseTask(BaseTask):
 
         def custom_auto_wrap_policy(module, recurse, *args, **kwargs):
             model_blocks = (
-                modules.tts.spat_edit.spat_dit_moe.EncoderLayer,
+                modules.spatial.spat_dit_moe.EncoderLayer,
                 qwen_layer,
             )
             return recurse or isinstance(module, model_blocks)

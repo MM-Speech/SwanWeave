@@ -268,7 +268,10 @@ class SpatEditInfer(SpatBaseInfer):
         use_amo_sampler: bool = False,
         use_sway: bool = True,
         match_src_duration: bool = True,
+        seed: int = 42,
     ):
+        # Seed before source VAE sampling and diffusion noise initialization.
+        torch.manual_seed(seed)
         input_sample_rate = int(hparams["audio_sample_rate"])
         src_wav = load_foa_wav(src_wav_path, input_sample_rate)
         src_duration_sec = float(src_wav.shape[0]) / float(input_sample_rate)
@@ -302,6 +305,7 @@ class SpatEditInfer(SpatBaseInfer):
             "src_wav_path": src_wav_path,
             "caption": caption,
             "out_path": out_path,
+            "seed": seed,
             "sample_rate": int(self.vae_sample_rate),
             "num_samples": int(wav.shape[0]),
             "num_channels": int(wav.shape[1]),
@@ -324,6 +328,7 @@ def build_parser():
     parser.add_argument("--precision", type=str, default="bf16", choices=["bf16", "fp16", "fp32"])
     parser.add_argument("--target_latent_len", type=int, default=0, help="Override output latent length")
     parser.add_argument("--num_steps", type=int, default=20, help="Number of ODE sampling steps")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed for VAE sampling and diffusion noise")
     parser.add_argument("--cfg", type=float, default=None, help="Shared CFG weight; defaults to 3.0")
     parser.add_argument("--caption_cfg", type=float, default=None, help="Instruction/caption CFG weight")
     parser.add_argument("--source_cfg", type=float, default=None, help="Source-preservation CFG weight")
@@ -357,6 +362,7 @@ def main():
         use_amo_sampler=args.use_amo_sampler,
         use_sway=not args.no_sway,
         match_src_duration=not args.no_match_src_duration,
+        seed=args.seed,
     )
     print(result)
     if args.summary_path:
@@ -371,7 +377,7 @@ if __name__ == "__main__":
     main()
 
 
-# python inference/tts/spat_edit_infer.py \
+# python inference/spatial/spat_edit_infer.py \
 #   --dit_ckpt checkpoints/260517_edit_base_test \
 #   --src_wav /mnt/bn/sa-ag-data/leike/spatial_edit/triplet/audio_distance_motion_pyroom/00000000/origin/foa.wav \
 #   --caption "The Gurgling moves farther away from directly to your right over its duration." \

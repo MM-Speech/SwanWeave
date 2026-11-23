@@ -1,6 +1,6 @@
 base_config:
-- ./config_base.yaml
-- ./datasets/spat_edit_dataset.yaml
+- egs/config_base.yaml
+- egs/datasets/spat_edit_dataset.yaml
 
 # task
 task_cls: tasks.spat_audio_edit_task.SpatAudioEditTask

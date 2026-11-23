@@ -1,4 +1,4 @@
-"""transformers 版本兼容层。集中给 modules/commons/hf/* 与 modules/tts/swanaudio/* 用。
+"""transformers 版本兼容层。集中给 modules/commons/hf/* 与 modules/spatial/* 用。
 优先 transformers 5.2 路径,缺失时退到旧路径或 no-op shim,让 4.x / 5.2+ 都能 import。
 稳定 API 直接 re-export;装饰器/类型注解给 identity/typing 兜底;基类回退 nn.Module;
 mask 构造类必须真有,缺则显式 NotImplementedError。
