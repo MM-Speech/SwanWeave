@@ -1,6 +1,7 @@
 # SwanWeave: One-Stage Multi-Task Instruction-Guided 3D Spatial Audio Editing
 
 SwanWeave supports multiple spatial audio editing tasks through natural-language instructions, including sound event manipulation and spatial motion editing.
+This work edits First-Order Ambisonics (FOA), a four-channel spatial audio representation stored using ACN channel ordering (W, Y, Z, X).
 
 ## Installation
 
@@ -51,7 +52,9 @@ checkpoints/
 
 ## Inference
 
-SwanWeave performs spatial audio editing based on a source audio file and a natural-language editing instruction.
+SwanWeave performs spatial audio editing based on a source audio file and a natural-language editing instruction. 
+
+** Note **: Playing FOA audio directly may not accurately convey the directions of sound sources. You can download the [IEM Plug-in Suite](https://plugins.iem.at/) and use it in Adobe Audition, or convert the audio to stereo using `utils/audiotools/foa2stereo.py`.
 
 ### Edit Examples
 
