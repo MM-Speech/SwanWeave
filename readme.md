@@ -103,3 +103,15 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python tasks/run.py \
 ## Dataset Construction
 
 TODO TASK...
+
+## Citation
+
+```bibtex
+@inproceedings{lei2026one,
+  title={One-Stage Multi-Task Instruction-Guided 3D Spatial Audio Editing},
+  author={Lei, Ke and Wen, Chenyuhao and Zhang, Yu and Guo, Wenxiang and Pan, Changhao and Zhou, Sashuai and Li, Yongshi and Li, Ruiqi and Hu, Ruofan and Xu, Haorui and others},
+  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2026},
+  pages={20355--20369},
+  year={2026}
+}
+```
