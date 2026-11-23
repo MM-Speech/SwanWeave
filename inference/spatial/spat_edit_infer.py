@@ -376,14 +376,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-# python inference/spatial/spat_edit_infer.py \
-#   --dit_ckpt checkpoints/260517_edit_base_test \
-#   --src_wav /mnt/bn/sa-ag-data/leike/spatial_edit/triplet/audio_distance_motion_pyroom/00000000/origin/foa.wav \
-#   --caption "The Gurgling moves farther away from directly to your right over its duration." \
-#   --out_path users/infer_out/edit3.wav \
-#   --device cuda \
-#   --precision bf16 \
-#   --num_steps 20 \
-#   --caption_cfg 3.0 \
-#   --source_cfg 3.0
