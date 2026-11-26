@@ -112,63 +112,6 @@ The pipeline builds two domains: `audio_only` uses FSDKaggle2019 and PicoAudio,
 while `speech_audio` additionally uses LibriSpeech. Run the following commands
 from the SwanWeave repository root.
 
-### Quick Start
-
-After installation, extract the source datasets and set `DATA_ROOT` in
-`utils/spatial_audio_editing/data_paths.py` as described below. Place the Stable
-Audio VAE under `checkpoints/vae/` before running the encoding stage.
-
-All data-construction commands are combined in [prepare_data.sh](prepare_data.sh):
-
-```bash
-bash prepare_data.sh
-```
-
-The default is a small run: both domains, train/test, 20 samples per single edit
-type and 20 samples per 2/3/4-operation group, followed by DPO generation, FOA
-rendering, and VAE mean/std extraction. It uses 8 CPU workers; VAE encoding uses
-CUDA when available. Captions use the supplied rule-based configurations.
-
-Increase the **training** target counts and worker count with environment variables:
-
-```bash
-NUM_WORKERS=32 SAMPLES_PER_TYPE=50000 \
-MULTI_COUNTS=2:200000,3:100000,4:50000 bash prepare_data.sh
-```
-
-Test targets stay at 20 unless `TEST_SAMPLES_PER_TYPE` and `TEST_MULTI_COUNTS`
-are also changed. Counts are target totals, not additional samples.
-
-| Stage | Processing |
-|---|---|
-| 1 | Slice PicoAudio into FLAC clips and labels |
-| 2 | Generate single/multi-operation train/test scenes |
-| 3 | Generate all DPO negatives (`--max 0`) |
-| 4 | Render FOA and export `gen_*`, `edit_*`, and `dpo_*` JSONL lists |
-| 5 | Save VAE posterior mean/std beside the referenced FOA files |
-
-Run only selected stages, or preview the commands without processing data:
-
-```bash
-bash prepare_data.sh --dry-run
-STAGE=4 STOP_STAGE=4 NUM_WORKERS=32 bash prepare_data.sh
-STAGE=4 STOP_STAGE=4 EXPORT_ONLY=1 bash prepare_data.sh
-STAGE=5 CUDA_VISIBLE_DEVICES=0 bash prepare_data.sh
-```
-
-`DOMAINS="audio_only"` and `SPLITS="train"` restrict scene generation and rendering.
-Stage 5 processes the available six aggregate lists. Set `PYTHON` to a Python
-executable path, `VAE_DEVICE` to select an encoding device, or `OVERWRITE_VAE=1`
-to regenerate posteriors after changing audio or VAE settings.
-See `bash prepare_data.sh --help` for all options.
-
-Training scene generation resumes existing IDs. The existing `--test-set` mode
-rebuilds test JSONL files; stage 1 rewrites PicoAudio slices/labels and stage 3
-rebuilds negative metadata. After changing generation rules, rebuild the affected
-scene files as explained below. Invalid render records are excluded and recorded
-in `*.errors.jsonl`; a completed render batch continues with its valid records.
-Other command failures stop the script.
-
 ### 1. Prepare the source datasets
 
 Download and extract the source datasets, then set `DATA_ROOT` in `utils/spatial_audio_editing/data_paths.py`. The data directory is independent of the repository location and holds both source data and generated outputs. The default source layout is:
