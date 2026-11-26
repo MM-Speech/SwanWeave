@@ -1,7 +1,7 @@
 datasets:
   audio_edit:
     train_sets:
-    - xxx.jsonl
+    - ‘your DATA_ROOT’/rendered_metadata/edit_train.jsonl
     weight: 1
     processer_fn: tasks.dataset_utils.spat_base_fastdataset.processer_fn_jsonl
     reader_chunk_size: 32

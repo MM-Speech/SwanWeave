@@ -7,7 +7,7 @@ task_cls: tasks.spat_audio_edit_dpo_task.SpatAudioEditDpoTask
 # auto reads the architecture from config.yaml beside load_ckpt.
 # dense/moe explicitly validates that the checkpoint has the requested type.
 dpo_model_type: auto
-load_ckpt: checkpoints/dit
+load_ckpt: ''
 train_base: false
 use_moe_ffn: false
 init_edit_lat_proj_from_t2a: false
@@ -42,5 +42,5 @@ max_sentences: 1
 max_tokens: 2000
 ds_workers: 2
 val_check_interval: 1000
-eval_max_batches: 1
-num_sanity_val_steps: 1
+eval_max_batches: 0
+num_sanity_val_steps: 0

@@ -2,7 +2,7 @@ datasets:
   __replace: true
   audio_edit_dpo:
     train_sets:
-    - xxx.jsonl
+    - xxx/rendered_metadata/dpo_train.jsonl
     weight: 1
     processer_fn: tasks.dataset_utils.spat_dpo_dataset.processer_fn_dpo_jsonl
     reader_chunk_size: 32

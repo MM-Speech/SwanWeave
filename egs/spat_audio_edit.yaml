@@ -22,9 +22,10 @@ use_audio_dataset: False
 
 # dataloader
 eval_max_batches: 0
-ds_workers: 12
-max_tokens: 3000
-max_sentences: 100
+num_sanity_val_steps: 0
+ds_workers: 2
+max_tokens: 2000
+max_sentences: 8
 max_frames: 6000   # 5min
 min_frames: 100
 tgt_size_max: 6000
@@ -45,8 +46,8 @@ shuffle_spk_ids: False
 # model
 model_size: base # small, 2b, 3b, base
 train_base: false  # true: original text-to-audio model; false: audio editing model with edit_lat_proj
-# Continue the released editor without overwriting its source projection.
-init_edit_lat_proj_from_t2a: false
+# Initialize the editing input projection after loading the generation model.
+init_edit_lat_proj_from_t2a: true
 use_cosyvoice2_text_tokenizer: False
 mix_text_pinyin:
   enable: true
@@ -117,7 +118,7 @@ vae_encode_chunk_sec: 120
 vae_encode_max_batch_size: 128
 vae_deterministic: False
 
-load_ckpt: checkpoints/dit
+load_ckpt: ''
 use_fsdp: false
 sharding_strategy: hybrid
 gradient_checkpointing: false
@@ -125,6 +126,7 @@ gradient_checkpointing: false
 use_ema: False
 ema_decay: 0.9999
 
+# Checkpoint interval; validation is disabled by eval_max_batches: 0.
 val_check_interval: 1000
 
 # training
