@@ -11,6 +11,7 @@ import multiprocessing as mp
 import os
 from pathlib import Path
 import re
+import stat
 import sys
 import tempfile
 
@@ -198,6 +199,21 @@ def output_signature(path):
     return [size, digest.hexdigest()]
 
 
+def completed_metadata(path, audio_paths):
+    """Reuse saved metadata when all output audio files exist and are nonempty."""
+    try:
+        for audio_path in audio_paths:
+            info = audio_path.stat()
+            if not stat.S_ISREG(info.st_mode) or info.st_size <= 0:
+                return None
+        saved = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(saved, dict) or "sample_id" not in saved:
+            return None
+        return {key: value for key, value in saved.items() if key != "_cache"}
+    except (OSError, ValueError):
+        return None
+
+
 def pair_directory(row, domain, split, data_root):
     task = component(row["edit_type"], "edit_type")
     identity = component(row["sample_id"], "sample_id")
@@ -230,9 +246,17 @@ def render_pair(row, *, domain, split="train", data_root=None, settings=None,
                 overwrite=False, input_metadata=None):
     """Public API: one scene-edit record -> one audio pair and one metadata record."""
     data_root = Path(data_root or config.DATA_ROOT).expanduser().absolute()
-    settings = validated_settings(settings)
     if domain not in config.SINGLE_RENDER_DIRS or split not in ("train", "test"):
         raise ValueError("domain must be audio_only/speech_audio; split must be train/test")
+    directory = pair_directory(row, domain, split, data_root)
+    source_path, target_path = directory / "origin/foa.flac", directory / "target/foa.flac"
+    relative_path(directory, data_root)  # Enforce the relative-path export contract.
+    completion = directory / "metadata.json"
+    if not overwrite:
+        saved = completed_metadata(completion, (source_path, target_path))
+        if saved is not None:
+            return saved, "skipped"
+    settings = validated_settings(settings)
     for key in ("original_scene", "target_scene"):
         if not isinstance(row.get(key), list):
             raise ValueError(f"{key} must be an event list")
@@ -267,24 +291,6 @@ def render_pair(row, *, domain, split="train", data_root=None, settings=None,
                                             "room_settings": room_settings, "sources": source_stats,
                                             "input_metadata": input_metadata,
                                             "domain": domain, "split": split, "implementation": IMPLEMENTATION_HASH}).encode()).hexdigest()
-    directory = pair_directory(row, domain, split, data_root)
-    source_path, target_path = directory / "origin/foa.flac", directory / "target/foa.flac"
-    relative_path(directory, data_root)  # Enforce the relative-path export contract.
-    completion = directory / "metadata.json"
-    if not overwrite and completion.is_file():
-        try:
-            saved = json.loads(completion.read_text())
-            cache = saved["_cache"]
-            valid = cache["fingerprint"] == fingerprint
-            for key, path in (("source", source_path), ("target", target_path)):
-                info = sf.info(path)
-                valid = valid and (info.samplerate, info.channels, info.frames, info.format, info.subtype) == (
-                    settings["sample_rate"], 4, frames, "FLAC", settings["subtype"])
-                valid = valid and output_signature(path) == cache[key]
-            if valid:
-                return {key: value for key, value in saved.items() if key != "_cache"}, "skipped"
-        except (KeyError, TypeError, ValueError, OSError, RuntimeError):
-            pass
     renderer = PairRenderer(data_root, settings)
     source_audio = renderer.scene(row["original_scene"], duration, source_room, "source")
     target_audio = renderer.scene(target, duration, target_room, "target")

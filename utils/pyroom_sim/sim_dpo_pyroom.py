@@ -66,10 +66,20 @@ def render_triplet(row, *, domain, split="train", data_root=None, settings=None,
                    overwrite=False, input_metadata=None):
     """Render all three scenes with one shared scale; commit metadata last."""
     data_root = Path(data_root or config.DATA_ROOT).expanduser().absolute()
-    settings = render.validated_settings(settings)
     if domain not in config.SINGLE_RENDER_DIRS or split not in ("train", "test"):
         raise ValueError("domain must be audio_only/speech_audio; split must be train/test")
     identity = sample_identity(row, domain, split)
+    _, _, _, task, raw_id, mode = identity.split("/")
+    directory = render.rooted(config.DPO_RENDER_ROOTS[split], data_root) / task / f"{domain}_{raw_id}" / mode
+    paths = {"source": directory / "source/foa.flac", "positive": directory / "target/foa.flac",
+             "negative": directory / "negative/foa.flac"}
+    render.relative_path(directory, data_root)
+    completion = directory / "metadata.json"
+    if not overwrite:
+        saved = render.completed_metadata(completion, paths.values())
+        if saved is not None:
+            return saved, "skipped"
+    settings = render.validated_settings(settings)
     caption = row.get("chosen", row.get("caption"))
     if not isinstance(caption, str) or not caption.strip():
         raise ValueError("DPO chosen/caption must contain the correct editing instruction")
@@ -103,26 +113,6 @@ def render_triplet(row, *, domain, split="train", data_root=None, settings=None,
         "sources": sources, "domain": domain, "split": split,
         "input_metadata": input_metadata, "implementation": IMPLEMENTATION_HASH,
     }).encode()).hexdigest()
-    _, _, _, task, raw_id, mode = identity.split("/")
-    directory = render.rooted(config.DPO_RENDER_ROOTS[split], data_root) / task / f"{domain}_{raw_id}" / mode
-    paths = {"source": directory / "source/foa.flac", "positive": directory / "target/foa.flac",
-             "negative": directory / "negative/foa.flac"}
-    render.relative_path(directory, data_root)
-    completion = directory / "metadata.json"
-    if not overwrite and completion.is_file():
-        try:
-            saved = json.loads(completion.read_text())
-            cache = saved["_cache"]
-            valid = cache["fingerprint"] == fingerprint
-            for side, path in paths.items():
-                info = sf.info(path)
-                valid = valid and (info.samplerate, info.channels, info.frames, info.format, info.subtype) == (
-                    settings["sample_rate"], 4, frames, "FLAC", settings["subtype"])
-                valid = valid and render.output_signature(path) == cache[side]
-            if valid:
-                return {key: value for key, value in saved.items() if key != "_cache"}, "skipped"
-        except (KeyError, TypeError, ValueError, OSError, RuntimeError):
-            pass
     renderer = render.PairRenderer(data_root, settings)
     audio = {side: renderer.scene(events, duration, rooms[side], side) for side, events in scenes.items()}
     peaks = {side: float(np.max(np.abs(samples))) for side, samples in audio.items()}
