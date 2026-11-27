@@ -215,12 +215,6 @@ flash_attn-2.7.0.post1+cu12torch2.3cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
 
 logs/
 install.sh
-/egs/*
-!/egs/config_base.yaml
-!/egs/spat_audio_edit.yaml
-!/egs/egs_bases/
-/egs/egs_bases/*
-!/egs/egs_bases/config_base.yaml
 inference/tts
 modules/asr
 modules/codec
@@ -236,12 +230,7 @@ modules/vocoder
 /tasks/dataset_utils/*
 !/tasks/dataset_utils/base_dataset.py
 !/tasks/dataset_utils/spat_base_fastdataset.py
-!/egs/datasets/
-/egs/datasets/*
-!/egs/datasets/spat_edit_dataset.yaml
 
 # Preference training.
 !/tasks/spat_audio_edit_dpo_task.py
 !/tasks/dataset_utils/spat_dpo_dataset.py
-!/egs/spat_audio_edit_dpo.yaml
-!/egs/datasets/spat_edit_dpo_dataset.yaml

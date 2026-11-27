@@ -1,0 +1,8 @@
+base_config:
+- egs/spat_audio_edit.yaml
+- egs/datasets/spat_gen_dataset.yaml
+
+# Stage 1: train generation from source/target scene captions.
+train_base: true
+load_ckpt: ''
+init_edit_lat_proj_from_t2a: false
