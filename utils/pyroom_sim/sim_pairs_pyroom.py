@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 import math
 import multiprocessing as mp
@@ -174,29 +175,26 @@ def atomic_json(path, record):
 
 
 def atomic_flac(path, audio, sample_rate, subtype):
+    """Encode and hash in memory, then atomically save the same FLAC bytes."""
+    with io.BytesIO() as buffer:
+        sf.write(buffer, audio, sample_rate, format="FLAC", subtype=subtype)
+        encoded_audio = buffer.getvalue()
+    signature = [len(encoded_audio), hashlib.sha256(encoded_audio).hexdigest()]
+
     path.parent.mkdir(parents=True, exist_ok=True)
     handle, temporary = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
-    os.close(handle)
     try:
-        sf.write(temporary, audio, sample_rate, format="FLAC", subtype=subtype)
+        with os.fdopen(handle, "wb") as stream:
+            stream.write(encoded_audio)
         os.replace(temporary, path)
     finally:
         Path(temporary).unlink(missing_ok=True)
+    return signature
 
 
 def audio_signature(path):
     stat = path.stat()
     return [stat.st_size, stat.st_mtime_ns]
-
-
-def output_signature(path):
-    """Content signature stays stable when a shared filesystem adjusts mtimes."""
-    digest, size = hashlib.sha256(), 0
-    with path.open("rb") as stream:
-        while chunk := stream.read(1024 * 1024):
-            digest.update(chunk)
-            size += len(chunk)
-    return [size, digest.hexdigest()]
 
 
 def completed_metadata(path, audio_paths):
@@ -321,10 +319,10 @@ def render_pair(row, *, domain, split="train", data_root=None, settings=None,
     for key in ("operation_count", "edit_types"):
         if key in row:
             metadata[key] = row[key]
-    atomic_flac(source_path, source_audio * scale, settings["sample_rate"], settings["subtype"])
-    atomic_flac(target_path, target_audio * scale, settings["sample_rate"], settings["subtype"])
+    source_signature = atomic_flac(source_path, source_audio * scale, settings["sample_rate"], settings["subtype"])
+    target_signature = atomic_flac(target_path, target_audio * scale, settings["sample_rate"], settings["subtype"])
     atomic_json(completion, {**metadata, "_cache": {"fingerprint": fingerprint,
-                "source": output_signature(source_path), "target": output_signature(target_path)}})
+                "source": source_signature, "target": target_signature}})
     return metadata, "rendered"
 
 

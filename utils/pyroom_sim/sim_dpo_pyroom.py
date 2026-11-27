@@ -14,7 +14,6 @@ import sys
 import tempfile
 
 import numpy as np
-import soundfile as sf
 
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
@@ -139,10 +138,10 @@ def render_triplet(row, *, domain, split="train", data_root=None, settings=None,
     for key in ("operation_count", "edit_types"):
         if key in row:
             metadata[key] = row[key]
+    signatures = {}
     for side, path in paths.items():
-        render.atomic_flac(path, audio[side] * scale, settings["sample_rate"], settings["subtype"])
-    render.atomic_json(completion, {**metadata, "_cache": {"fingerprint": fingerprint,
-                       **{side: render.output_signature(path) for side, path in paths.items()}}})
+        signatures[side] = render.atomic_flac(path, audio[side] * scale, settings["sample_rate"], settings["subtype"])
+    render.atomic_json(completion, {**metadata, "_cache": {"fingerprint": fingerprint, **signatures}})
     return metadata, "rendered"
 
 
